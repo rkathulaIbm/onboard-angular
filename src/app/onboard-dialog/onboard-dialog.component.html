@@ -1,0 +1,65 @@
+<h1 mat-dialog-title>Associate details</h1>
+
+<mat-dialog-content>
+    
+    <h3>Basic Information</h3>
+<table class="styled-table">
+ 
+    <thead><tr><th>Field</th><th>Data</th></tr></thead>
+    <tbody>
+    <tr><th>Associate Name</th><th>{{editData.associateName}}</th></tr>
+    <tr><th>IBM Id</th><th>{{editData.ibmId}}</th></tr>
+    <tr><th>Email IBM</th><th>{{editData.emailIBM}}</th></tr>
+    <tr><th>Location</th><th>{{editData.location}}</th></tr>
+    <tr><th>Role</th><th>{{editData.role}}</th></tr>
+    <tr><th>It Exp Date</th><th>{{editData.itExpDate}}</th></tr>
+    <tr><th>ProjectId</th><th>{{editData.projectId}}</th></tr>
+    <tr><th>Engagement Name</th><th>{{editData.engagementName}}</th></tr>
+    <tr><th>Band</th><th>{{editData.band}}</th></tr>
+    <tr><th>Email Client</th><th>{{editData.emailClient}}</th></tr>
+    <tr><th>Xid</th><th>{{editData.xid}}</th></tr>
+    <tr><th>Client Manager</th><th>{{editData.clientManager}}</th></tr>
+    <tr><th>End Date</th><th>{{editData.endDate}}</th></tr>
+    <tr><th>City</th><th>{{editData.city}}</th></tr>
+    <tr><th>Bill Type</th><th>{{editData.billType}}</th></tr>
+    <tr><th>Bill Code</th><th>{{editData.billCode}}</th></tr>
+    <tr><th>As On Date</th><th>{{editData.asOnDate}}</th></tr>
+    <tr><th>Client Exp Date</th><th>{{editData.clientExpDate}}</th></tr>
+    <tr><th>IBM Date</th><th>{{editData.ibmDate}}</th></tr>
+    <tr><th>Experience With Pru</th><th>{{editData.experienceWithPru}}</th></tr>
+    <tr><th>Career Experience</th><th>{{editData.careerExperience}}</th></tr>
+    <tr><th>Experience With Ibm</th><th>{{editData.experienceWithIbm}}</th></tr>
+    <tr><th>Resource Criticality</th><th>{{editData.resourceCriticality}}</th></tr>
+    <tr><th>At Immigration Visa Risks</th><th>{{editData.atImmigrationVisaRisks}}</th></tr>
+    <tr><th>Backup Successor Resource</th><th>{{editData.backupSuccessorResource}}</th></tr>
+    <tr><th>Key Contingency Group</th><th>{{editData.keyContingencyGroup}}</th></tr>
+    <tr><th>Visa Type</th><th>{{editData.visaType}}</th></tr>
+    <tr><th>Work Permit Valid Until</th><th>{{editData.workPermitValidUntil}}</th></tr>
+    <tr><th>Extension Updates</th><th>{{editData.extensionUpdates}}</th></tr>
+    <tr><th>Visa Max Out Date</th><th>{{editData.visaMaxOutDate}}</th></tr>
+    <tr><th>Time Left In Us</th><th>{{editData.timeLeftInUs}}</th></tr>
+    <tr><th>Visa Nominations</th><th>{{editData.visaNominations}}</th></tr>
+    <tr><th>Risk Mitigation Comments</th><th>{{editData.riskMitigationComments}}</th></tr>
+    <tr><th>Plan In Case Of Extension Amendment Rejection</th><th>{{editData.planInCaseOfExtensionAmendmentRejection}}</th></tr>
+</tbody>
+    
+<h3>Skills</h3>
+<table class="styled-table">
+     
+    <thead><tr><th>Skill</th><th>Rating</th></tr></thead>
+    <tbody>
+    <tr><th>Java</th><th>3</th></tr>
+    <tr><th>Angular</th><th>4</th></tr>
+    </tbody>
+</table>
+
+
+
+</table>
+</mat-dialog-content>
+  
+<div mat-dialog-action [align]="'end'">
+
+    <!-- <button mat-raised-button color="primary" (click)="addAssociate()">{{actionBtn}}</button> -->
+    <button style="margin-left: 20px;" mat-raised-button color="warn" mat-dialog-close>Close</button>
+</div>

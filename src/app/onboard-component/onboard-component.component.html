@@ -1,0 +1,283 @@
+
+<div class="container">
+
+    <div style="margin-top: 30px;margin-left:20px"><h2>Associate Details</h2></div>
+<div class="onBoardTable">
+    <h1>Basic Information</h1>
+    <!-- <form [formGroup]="onboardForm" (ngSubmit)="addUpdateAssociateDetail()"> -->
+    <form [formGroup]="onboardForm" >
+    <div class="example-container">
+     <mat-form-field appearance="outline">
+         <mat-label>Associate Name</mat-label>
+         <input formControlName="associateName" matInput placeholder="Placeholder">
+         
+     </mat-form-field>
+     <mat-form-field appearance="outline">
+         <mat-label>IBM Id</mat-label>
+         <input formControlName="ibmId" matInput placeholder="Placeholder">
+     </mat-form-field>
+     <mat-form-field appearance="outline">
+         <mat-label>IBM Email</mat-label>
+         <input  formControlName="emailIbm"matInput placeholder="Placeholder">
+     </mat-form-field>
+   
+     <mat-form-field appearance="outline">
+         <mat-label>Location</mat-label>
+         <input formControlName="location" matInput placeholder="Placeholder">
+     </mat-form-field>
+    </div>
+
+    <div class="example-container">
+         <mat-form-field appearance="outline">
+         <mat-label>Role</mat-label>
+         <mat-select formControlName="role" >
+             <mat-option value="Team Lead">Team lead</mat-option>
+             <mat-option value="Engineer">Engineer</mat-option>
+ 
+         </mat-select>
+     </mat-form-field>
+     <mat-form-field appearance="fill">
+         <mat-label>IT Exp Date</mat-label>
+         <input formControlName="itExpDate" matInput [matDatepicker]="itExpDatePicker">
+         <mat-hint>MM/DD/YYYY</mat-hint>
+         <mat-datepicker-toggle matSuffix [for]="itExpDatePicker"></mat-datepicker-toggle>
+         <mat-datepicker #itExpDatePicker></mat-datepicker>
+       </mat-form-field>
+ 
+    
+  <mat-form-field appearance="outline">
+         <mat-label>Engagement Name</mat-label>
+         <input formControlName="engagementName" matInput placeholder="Placeholder">
+     </mat-form-field>
+ 
+     <mat-form-field appearance="outline">
+         <mat-label>Primary Contact</mat-label>
+         <input formControlName="primaryContact" matInput placeholder="Placeholder">
+     </mat-form-field>
+    </div>
+
+    <div class="example-container">
+     <mat-form-field appearance="outline">
+         <mat-label>Project Id</mat-label>
+         <input formControlName="projectId" matInput placeholder="Placeholder">
+     </mat-form-field>
+    
+     <mat-form-field appearance="outline">
+         <mat-label>Major Function</mat-label>
+         <input formControlName="majorFunction" matInput placeholder="Placeholder">
+     </mat-form-field>
+ 
+     <mat-form-field appearance="outline">
+         <mat-label>Band</mat-label>
+         <input formControlName="band" matInput placeholder="Placeholder">
+     </mat-form-field>
+ 
+     <mat-form-field appearance="outline">
+         <mat-label>Email Client</mat-label>
+         <input formControlName="emailClient" matInput placeholder="Placeholder">
+     </mat-form-field>
+ </div>
+ <div class="example-container">
+     <mat-form-field appearance="outline">
+         <mat-label>XID</mat-label>
+         <input formControlName="xid" matInput placeholder="Placeholder">
+     </mat-form-field>
+ 
+     <mat-form-field appearance="outline">
+         <mat-label>Client Manager</mat-label>
+         <input formControlName="clientManager" matInput placeholder="Placeholder">
+     </mat-form-field>
+ 
+     <mat-form-field appearance="fill">
+         <mat-label>End Date</mat-label>
+         <input formControlName="endDate" matInput [matDatepicker]="endDatePicker">
+         <mat-hint>MM/DD/YYYY</mat-hint>
+         <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+         <mat-datepicker #endDatePicker></mat-datepicker>
+       </mat-form-field>
+ 
+     <mat-form-field appearance="outline">
+         <mat-label>City</mat-label>
+         <input formControlName="city" matInput placeholder="Placeholder">
+     </mat-form-field>
+    </div>
+    <div class="example-container">
+     <mat-form-field appearance="outline">
+        <mat-label>Bill Type</mat-label>
+         <!-- <input formControlName="billType" matInput placeholder="Placeholder"> -->
+         
+                                <mat-select required formControlName="billType">
+                                    <mat-option *ngFor="let billtype of billtypes" [value]="billtype.value">
+                                      {{billtype.value}}
+                                    </mat-option>
+                                  </mat-select>
+     </mat-form-field>
+ 
+     <mat-form-field appearance="outline">
+         <mat-label>Bill Code</mat-label>
+         <input formControlName="billCode" matInput placeholder="Placeholder">
+     </mat-form-field>
+
+     <mat-form-field appearance="fill">
+         <mat-label>As On Date</mat-label>
+         <input formControlName="asOnDate" matInput [matDatepicker]="asOnDatePicker">
+         <mat-hint>MM/DD/YYYY</mat-hint>
+         <mat-datepicker-toggle matSuffix [for]="asOnDatePicker"></mat-datepicker-toggle>
+         <mat-datepicker #asOnDatePicker></mat-datepicker>
+       </mat-form-field>
+ 
+       <mat-form-field appearance="fill">
+         <mat-label>Client Exp Date</mat-label>
+         <input formControlName="clientExpDate" matInput [matDatepicker]="clientExpDatePicker">
+         <mat-hint>MM/DD/YYYY</mat-hint>
+         <mat-datepicker-toggle matSuffix [for]="clientExpDatePicker"></mat-datepicker-toggle>
+         <mat-datepicker #clientExpDatePicker></mat-datepicker>
+       </mat-form-field>
+    </div>
+    <div class="example-container">
+       <mat-form-field appearance="fill">
+         <mat-label>IBM Date</mat-label>
+         <input formControlName="ibmDate" matInput [matDatepicker]="ibmDatePicker">
+         <mat-hint>MM/DD/YYYY</mat-hint>
+         <mat-datepicker-toggle matSuffix [for]="ibmDatePicker"></mat-datepicker-toggle>
+         <mat-datepicker #ibmDatePicker></mat-datepicker>
+       </mat-form-field> 
+       
+       <mat-form-field appearance="outline">
+         <mat-label>Experience With Client</mat-label>
+         <input formControlName="experienceWithClient" matInput placeholder="Placeholder">
+     </mat-form-field>
+     
+     <mat-form-field appearance="outline">
+         <mat-label>Career Experience</mat-label>
+         <input formControlName="careerExperience" matInput placeholder="Placeholder">
+     </mat-form-field>
+ 
+     <mat-form-field appearance="outline">
+         <mat-label>Experience With IBM</mat-label>
+         <input formControlName="experienceWithIbm" matInput placeholder="Placeholder">
+     </mat-form-field>
+ </div>
+ <div class="example-container">
+     <mat-form-field appearance="outline">
+         <mat-label>Resource Criticality</mat-label>
+         <input formControlName="resourceCriticality" matInput placeholder="Placeholder">
+     </mat-form-field>
+ 
+     <mat-form-field appearance="outline">
+         <mat-label>At Immigration Visa Risks</mat-label>
+         <input formControlName="atImmigrationVisaRisks" matInput placeholder="Placeholder">
+     </mat-form-field>
+ 
+     <mat-form-field appearance="outline">
+         <mat-label>Backup Successor Resource</mat-label>
+         <input formControlName="backupSuccessorResource" matInput placeholder="Placeholder">
+     </mat-form-field>
+
+     <mat-form-field appearance="outline">
+         <mat-label>Key Contingency Group</mat-label>
+         <input formControlName="keyContingencyGroup" matInput placeholder="Placeholder">
+     </mat-form-field>
+    </div>
+    <div class="example-container">
+     <mat-form-field appearance="outline">
+         <mat-label>Additional Contingency</mat-label>
+         <input formControlName="additionalContingency" matInput placeholder="Placeholder">
+     </mat-form-field>
+ 
+     <mat-form-field appearance="outline">
+         <mat-label>Visa Type</mat-label>
+         <input formControlName="visaType" matInput placeholder="Placeholder">
+     </mat-form-field>
+
+     <mat-form-field appearance="outline">
+         <mat-label>Work Permit Valid Until</mat-label>
+         <input formControlName="workPermitValidUntil" matInput placeholder="Placeholder">
+     </mat-form-field>
+ 
+     <mat-form-field appearance="outline">
+         <mat-label>Extension Updates</mat-label>
+         <input formControlName="extensionUpdates" matInput placeholder="Placeholder">
+     </mat-form-field>
+    </div>
+    <div class="example-container">
+     <mat-form-field appearance="outline">
+        
+         <mat-label>Visa Max Out Date</mat-label>
+         <input formControlName="visaMaxOutDate" matInput [matDatepicker]="visaMaxOutDate">
+         <mat-hint>MM/DD/YYYY</mat-hint>
+         <mat-datepicker-toggle matSuffix [for]="visaMaxOutDate"></mat-datepicker-toggle>
+         <mat-datepicker #visaMaxOutDate></mat-datepicker>
+     </mat-form-field>
+
+     <mat-form-field appearance="outline">
+         <mat-label>Time Left In Us</mat-label>
+         <input formControlName="timeLeftInUs" matInput placeholder="Placeholder">
+     </mat-form-field>
+ 
+     <mat-form-field appearance="outline">
+         <mat-label>Visa Nominations</mat-label>
+         <input formControlName="visaNominations" matInput placeholder="Placeholder">
+     </mat-form-field>
+ 
+     <mat-form-field appearance="outline">
+         <mat-label>Risk Mitigation Comments</mat-label>
+         <input formControlName="riskMitigationComments" matInput placeholder="Placeholder">
+     </mat-form-field>
+ </div>
+
+    <div class="example-container">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Skill Set</mat-label>
+            <input formControlName="skillset" matInput placeholder="Placeholder">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>H1B Nominations</mat-label>
+            <input formControlName="h1bNominations" matInput placeholder="Placeholder">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Plan In Case Of Extension Amendment Rejection</mat-label>
+            <input formControlName="planInCaseOfExtensionAmendmentRejection" matInput placeholder="Placeholder">
+        </mat-form-field>
+
+    
+        
+    </div>
+<h1>Skills</h1>
+    <div *ngFor="let form of skillForm; let f = index">
+        <form [formGroup]="form">
+            <div class = "full-width">                             
+                      <mat-form-field appearance="fill">
+                        <mat-label>Skill Name</mat-label>
+                        <mat-select required formControlName="skillId">
+                            <mat-option *ngFor="let skill of skills" [value]="skill.id">
+                              {{skill.value}}
+                            </mat-option>
+                          </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="fill">
+                        <mat-label>Skill Rating</mat-label>
+                        <mat-select required formControlName="skillRating">
+                            <mat-option *ngFor="let rate of rates" [value]="rate.value">
+                              {{rate.value}}
+                            </mat-option>
+                          </mat-select>
+                      </mat-form-field>
+               
+                </div>                          
+
+                </form>
+            </div>
+ 
+    <div class = "full-width"> 
+        <button mat-raised-button  (click)="addNewSkillForm()" style="margin-right: 50px;"color="primary">Add Skill Form</button>
+        <button mat-raised-button type="submit" (click)="saveAssociateCompleteDetail()" color="primary">Submit</button>
+      </div>
+</form>
+ 
+ </div>
+</div>
