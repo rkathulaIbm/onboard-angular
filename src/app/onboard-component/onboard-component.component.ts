@@ -137,7 +137,7 @@ export class OnboardComponentComponent implements OnInit {
           associateSkill.push(skill.value);
         }
       });
-     
+      if(this.onboardForm.valid && i == 0){
       let data={
         "associate":this.onboardForm.value,
         "associateSkill":associateSkill
@@ -149,14 +149,9 @@ export class OnboardComponentComponent implements OnInit {
       data.associate.ibmDate=data.associate.ibmDate.toISOString().slice(0, 10);
       data.associate.visaMaxOutDate=data.associate.visaMaxOutDate.toISOString().slice(0, 10);
       
-      // data.associate.endDate=null;
-      // data.associate.asOnDate=null;
-      // data.associate.clientExpDate=null;
-      // data.associate.itExpDate=null;
-      // data.associate.ibmDate=null;
-      // data.associate.visaMaxOutDate=null;
+      
       console.log("data",data);
-      //  if(this.onboardForm.valid && i == 0){
+        
         this.api.postAssociate(data)
         .subscribe({
           next:(res)=>{
@@ -169,7 +164,7 @@ export class OnboardComponentComponent implements OnInit {
           },
   
         })
-      // }
+      }
     
   }
 

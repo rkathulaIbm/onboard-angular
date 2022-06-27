@@ -1,49 +1,49 @@
-<h1 mat-dialog-title>Associate details</h1>
+<h1 mat-dialog-title>Associate Details</h1>
 
 <mat-dialog-content>
     
     <h3>Basic Information</h3>
 <table class="styled-table">
  
-    <thead><tr><th>Field</th><th>Data</th></tr></thead>
+    <thead><tr><th>Associate Name</th><th>{{associateData.associateName}}</th></tr></thead>
     <tbody>
-    <tr><th>Associate Name</th><th>{{editData.associateName}}</th></tr>
-    <tr><th>IBM Id</th><th>{{editData.ibmId}}</th></tr>
-    <tr><th>Email IBM</th><th>{{editData.emailIBM}}</th></tr>
-    <tr><th>Location</th><th>{{editData.location}}</th></tr>
-    <tr><th>Role</th><th>{{editData.role}}</th></tr>
-    <tr><th>It Exp Date</th><th>{{editData.itExpDate}}</th></tr>
-    <tr><th>ProjectId</th><th>{{editData.projectId}}</th></tr>
-    <tr><th>Engagement Name</th><th>{{editData.engagementName}}</th></tr>
-    <tr><th>Band</th><th>{{editData.band}}</th></tr>
-    <tr><th>Email Client</th><th>{{editData.emailClient}}</th></tr>
-    <tr><th>Xid</th><th>{{editData.xid}}</th></tr>
-    <tr><th>Client Manager</th><th>{{editData.clientManager}}</th></tr>
-    <tr><th>End Date</th><th>{{editData.endDate}}</th></tr>
-    <tr><th>City</th><th>{{editData.city}}</th></tr>
-    <tr><th>Bill Type</th><th>{{editData.billType}}</th></tr>
-    <tr><th>Bill Code</th><th>{{editData.billCode}}</th></tr>
-    <tr><th>As On Date</th><th>{{editData.asOnDate}}</th></tr>
-    <tr><th>Client Exp Date</th><th>{{editData.clientExpDate}}</th></tr>
-    <tr><th>IBM Date</th><th>{{editData.ibmDate}}</th></tr>
-    <tr><th>Experience With Pru</th><th>{{editData.experienceWithPru}}</th></tr>
-    <tr><th>Career Experience</th><th>{{editData.careerExperience}}</th></tr>
-    <tr><th>Experience With Ibm</th><th>{{editData.experienceWithIbm}}</th></tr>
-    <tr><th>Resource Criticality</th><th>{{editData.resourceCriticality}}</th></tr>
-    <tr><th>At Immigration Visa Risks</th><th>{{editData.atImmigrationVisaRisks}}</th></tr>
-    <tr><th>Backup Successor Resource</th><th>{{editData.backupSuccessorResource}}</th></tr>
-    <tr><th>Key Contingency Group</th><th>{{editData.keyContingencyGroup}}</th></tr>
-    <tr><th>Visa Type</th><th>{{editData.visaType}}</th></tr>
-    <tr><th>Work Permit Valid Until</th><th>{{editData.workPermitValidUntil}}</th></tr>
-    <tr><th>Extension Updates</th><th>{{editData.extensionUpdates}}</th></tr>
-    <tr><th>Visa Max Out Date</th><th>{{editData.visaMaxOutDate}}</th></tr>
-    <tr><th>Time Left In Us</th><th>{{editData.timeLeftInUs}}</th></tr>
-    <tr><th>Visa Nominations</th><th>{{editData.visaNominations}}</th></tr>
-    <tr><th>Risk Mitigation Comments</th><th>{{editData.riskMitigationComments}}</th></tr>
-    <tr><th>Plan In Case Of Extension Amendment Rejection</th><th>{{editData.planInCaseOfExtensionAmendmentRejection}}</th></tr>
+    
+    <tr><th>IBM Id</th><th>{{associateData.ibmId}}</th></tr>
+    <tr><th>Email IBM</th><th>{{associateData.emailIbm}}</th></tr>
+    <tr><th>Location</th><th>{{associateData.location}}</th></tr>
+    <tr><th>Role</th><th>{{associateData.role}}</th></tr>
+    <tr><th>It Exp Date</th><th>{{associateData.itExpDate}}</th></tr>
+    <tr><th>ProjectId</th><th>{{associateData.projectId}}</th></tr>
+    <tr><th>Engagement Name</th><th>{{associateData.engagementName}}</th></tr>
+    <tr><th>Band</th><th>{{associateData.band}}</th></tr>
+    <tr><th>Email Client</th><th>{{associateData.emailClient}}</th></tr>
+    <tr><th>Xid</th><th>{{associateData.xid}}</th></tr>
+    <tr><th>Client Manager</th><th>{{associateData.clientManager}}</th></tr>
+    <tr><th>End Date</th><th>{{associateData.endDate}}</th></tr>
+    <tr><th>City</th><th>{{associateData.city}}</th></tr>
+    <tr><th>Bill Type</th><th>{{associateData.billType}}</th></tr>
+    <tr><th>Bill Code</th><th>{{associateData.billCode}}</th></tr>
+    <tr><th>As On Date</th><th>{{associateData.asOnDate}}</th></tr>
+    <tr><th>Client Exp Date</th><th>{{associateData.clientExpDate}}</th></tr>
+    <tr><th>IBM Date</th><th>{{associateData.ibmDate}}</th></tr>
+    <tr><th>Experience With Pru</th><th>{{associateData.experienceWithPru}}</th></tr>
+    <tr><th>Career Experience</th><th>{{associateData.careerExperience}}</th></tr>
+    <tr><th>Experience With Ibm</th><th>{{associateData.experienceWithIbm}}</th></tr>
+    <tr><th>Resource Criticality</th><th>{{associateData.resourceCriticality}}</th></tr>
+    <tr><th>At Immigration Visa Risks</th><th>{{associateData.atImmigrationVisaRisks}}</th></tr>
+    <tr><th>Backup Successor Resource</th><th>{{associateData.backupSuccessorResource}}</th></tr>
+    <tr><th>Key Contingency Group</th><th>{{associateData.keyContingencyGroup}}</th></tr>
+    <tr><th>Visa Type</th><th>{{associateData.visaType}}</th></tr>
+    <tr><th>Work Permit Valid Until</th><th>{{associateData.workPermitValidUntil}}</th></tr>
+    <tr><th>Extension Updates</th><th>{{associateData.extensionUpdates}}</th></tr>
+    <tr><th>Visa Max Out Date</th><th>{{associateData.visaMaxOutDate}}</th></tr>
+    <tr><th>Time Left In Us</th><th>{{associateData.timeLeftInUs}}</th></tr>
+    <tr><th>Visa Nominations</th><th>{{associateData.visaNominations}}</th></tr>
+    <tr><th>Risk Mitigation Comments</th><th>{{associateData.riskMitigationComments}}</th></tr>
+    <tr><th>Plan In Case Of Extension Amendment Rejection</th><th>{{associateData.planInCaseOfExtensionAmendmentRejection}}</th></tr>
 </tbody>
     
-<h3>Skills</h3>
+<h3 style="margin-top:50px">Skills</h3>
 <table class="styled-table">
      
     <thead><tr><th>Skill</th><th>Rating</th></tr></thead>

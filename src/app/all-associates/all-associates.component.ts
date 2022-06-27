@@ -73,36 +73,16 @@ export class AllAssociatesComponent implements OnInit {
     });
   }
 
-  downloadAssociateRecord(row:any){
-
-
-    // this.api.downloadExcel(row)
-    // .subscribe(data=>{
-    //   let blob = new Blob([data], { type:'application/octet-stream'});
-    //   let url = window.URL.createObjectURL(blob);
-    //   let pwa = window.open(url);
-    //   if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
-    //       alert( 'Please disable your Pop-up blocker and try again.');
-    //   }
-
-    // })
-  }
-  downloadAssociates(){
-    alert("hello");
-    // 12234a
-    let url="http://localhost:9191/pru-associate/export-excel/00RHV8717"
+  
+  downloadAllAssociatesDetails(){
+    let url="http://localhost:9191/pru-associate/export-excel/"
     window.location.assign(url);
-    // this.http.get<any>(url,{responseType: "blob" as 'json'})
-    // .subscribe(data=>{
-    //   let blob = new Blob([data], { type:'application/octet-stream'});
-    //   let url = window.URL.createObjectURL(blob);
-    //   let pwa = window.open(url);
-    //   if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
-    //       alert( 'Please disable your Pop-up blocker and try again.');
-    //   }
+  }
 
-    // })
-
+  downloadIndividualAssociateDetails(data:any){
+    // 12234a
+    let url="http://localhost:9191/pru-associate/export-excel/"+data.ibmId;
+    window.location.assign(url);
   }
 
   deleteAssociate(row:any){
