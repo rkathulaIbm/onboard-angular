@@ -26,6 +26,7 @@ export class AllAssociatesComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   constructor(public dialog: MatDialog,private http:HttpClient,private api:ApiService) {}
   ngOnInit(): void {
+    
     this.getAssociates();
   }
 
@@ -66,6 +67,8 @@ export class AllAssociatesComponent implements OnInit {
 
     })
   }
+  
+
   viewAssociate(row:any){
     this.dialog.open(OnboardDialogComponent,{
       width:'50%',

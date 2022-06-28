@@ -14,18 +14,22 @@ return this.http.get<any>("http://localhost:9191/pru-associate/get-all-associate
 // return this.http.get<any>("http://localhost:9191/pru-associate/get-associate-with-skill-details-by-id/25");
 // get single record : http://localhost:9191/pru-associate/get-associate-with-skill-details-by-id/25
 
-return this.http.get<any>("http://localhost:9191/pru-associate/get-associates");
+
   }
+
+getSingleAssociateCompleteDetails(data:any){
+  return this.http.get<any>("http://localhost:9191/pru-associate/get-associate-with-skill-details-by-id/"+data.associateId);
+  
+}
+
+getSkillsDetails(){
+  return this.http.get<any>("http://localhost:9191/pru-skill/get-skill-master");
+  
+}
 
   postAssociate(data:any){
     return this.http.post<any>("http://localhost:9191/pru-associate/save-associate",data);
   }
-
-  // downloadExcel(data:any){
-  //   let url="http://localhost:9191/pru-associate/export-excel/"
-  //   if(data) url=url+data.ibmId;
-  //   return this.http.get<any>(url,{responseType: "blob" as 'json'});
-  // }
 
   downloadExcel(){
     let url="http://localhost:9191/pru-associate/export-excel/"

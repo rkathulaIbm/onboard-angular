@@ -10,12 +10,7 @@ import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 
 export class OnboardComponentComponent implements OnInit {
-  public skills = [
-    { id: 1, value: 'JAVA' },
-    { id: 2, value: 'ANGULAR' },
-    { id: 3, value: 'MICROSERVICES' },
-    { id: 4, value: 'REACT' },
-  ];
+ 
   public billtypes = [
     { id: 1, value: 'Time & Money' },
     { id: 2, value: 'Fixed Price' },
@@ -27,13 +22,14 @@ export class OnboardComponentComponent implements OnInit {
     { id: 4, value: '4' },
     { id: 5, value: '5' },
   ];
+  skills:any;
   onboardForm!:FormGroup;
   skillForm!: FormGroup[];
   dummy:any;
   constructor(private formBuilder:FormBuilder,private api:ApiService) { }
 
   ngOnInit(): void {
-
+    this.getSkillsData();
     this.onboardForm=this.formBuilder.group({
 
       associateName:['',Validators.required],
@@ -115,7 +111,20 @@ export class OnboardComponentComponent implements OnInit {
 
   }
   
-
+  getSkillsData(){
+    this.api.getSkillsDetails()
+        .subscribe({
+          next:(res)=>{
+            this.skills=res;
+              
+          },
+          error:()=>{
+            alert("Error");
+  
+          },
+  
+        })
+  }
   addNewSkillForm() {
     this.skillForm.push(
       this.formBuilder.group({
@@ -156,16 +165,12 @@ export class OnboardComponentComponent implements OnInit {
         .subscribe({
           next:(res)=>{
             alert("Associate added successfully");
-  
           },
           error:()=>{
             alert("Error");
-  
           },
-  
         })
       }
-    
   }
 
   addUpdateAssociateDetail(){
