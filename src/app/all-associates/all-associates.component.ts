@@ -9,6 +9,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { OnboardDialogComponent } from '../onboard-dialog/onboard-dialog.component';
 import { ApiService } from '../services/api.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class AllAssociatesComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(public dialog: MatDialog,private http:HttpClient,private api:ApiService) {}
+  constructor(public route:Router, public dialog: MatDialog,private http:HttpClient,private api:ApiService) {}
   ngOnInit(): void {
     
     this.getAssociates();
@@ -69,7 +70,8 @@ export class AllAssociatesComponent implements OnInit {
   }
   
   editAssociateDetails(row:any){
-
+    
+    this.route.navigate(['/addNewAssociate']);
   }
 
   viewAssociate(row:any){
