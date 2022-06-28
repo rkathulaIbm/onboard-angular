@@ -3,9 +3,9 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { OnboardDialogComponent } from './onboard-dialog/onboard-dialog.component';
 import { ApiService } from './services/api.service';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
 import { DialogComponent } from './dialog/dialog.component';
+import { LoginResponse } from './models/login.model';
+import { CommonService } from './services/common.service';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +14,33 @@ import { DialogComponent } from './dialog/dialog.component';
 })
 export class AppComponent implements OnInit {
   
-  constructor() {}
+  jwtToken: string= '';
+  constructor(private apiService: ApiService, private commonService: CommonService) {}
   ngOnInit(): void {
     
+  }
+
+  doLogin=()=>{
+    const loginForm={
+      username:'foo',
+      password:'foo'
+    } 
+
+    this.apiService.authenticate(loginForm).subscribe((res: LoginResponse)=>{
+      console.log(res.jwt)
+      this.commonService.jwtGloablToken$.next(res.jwt ?? '')
+    }, (err)=>{
+      console.log(err)
+    }, ()=>{
+      this.jwtToken= this.commonService.jwtGloablToken$.getValue();
+    })
+  }
+
+
+  doLogout=()=>{
+
+    this.commonService.jwtGloablToken$.next('');
+    this.jwtToken='';
   }
 
 }

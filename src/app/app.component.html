@@ -3,9 +3,12 @@
   
   <span>Onboarding Application</span>
   <span class="example-spacer"></span>
+  <button *ngIf="!jwtToken" mat-raised-button color="success" (click)="doLogin()">Login</button>
+  <button *ngIf="jwtToken" mat-raised-button color="success" (click)="doLogout()">Logout</button>
   <button style="margin-right:10px"mat-raised-button color="success" routerLink="/addNewAssociate">Add New Associate</button>
   <button mat-raised-button color="success" routerLink="/allAssociates">All Associates</button>
 </mat-toolbar>
 <router-outlet></router-outlet>
 
 <div class="welcomeDiv"><p class="welcomeText">Welcome to Onboarding Application</p></div>
+{{jwtToken}}

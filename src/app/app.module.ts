@@ -15,13 +15,16 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { OnboardComponentComponent } from './onboard-component/onboard-component.component';
 import { AllAssociatesComponent } from './all-associates/all-associates.component';
+import { CommonService } from './services/common.service';
+import { HTTPInterceptor } from './interceptor/http-interceptor';
+import { CommonConfig } from './config/common-config';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +54,8 @@ import { AllAssociatesComponent } from './all-associates/all-associates.componen
     MatSortModule,
     MatTooltipModule
   ],
-  providers: [],
+  providers: [CommonService, CommonConfig,
+    { provide: HTTP_INTERCEPTORS, useClass: HTTPInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -21,7 +21,7 @@ export class AllAssociatesComponent implements OnInit {
   title = 'MAT';
   
   displayedColumns: string[] = ['associateName', 'ibmId', 'emailIBM', 'location','role','itExpDate','view/edit','action'];
-  dataSource!: MatTableDataSource<any>;
+  tableDataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -33,10 +33,10 @@ export class AllAssociatesComponent implements OnInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.tableDataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+    if (this.tableDataSource.paginator) {
+      this.tableDataSource.paginator.firstPage();
     }
   }
 
@@ -56,9 +56,9 @@ export class AllAssociatesComponent implements OnInit {
       next:(res)=>{
         
         console.log(res);
-         this.dataSource=new MatTableDataSource(res);
-         this.dataSource.paginator=this.paginator;
-         this.dataSource.sort=this.sort;
+         this.tableDataSource=new MatTableDataSource(res);
+         this.tableDataSource.paginator=this.paginator;
+         this.tableDataSource.sort=this.sort;
 
       },
       error:()=>{
