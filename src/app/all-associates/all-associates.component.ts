@@ -68,6 +68,9 @@ export class AllAssociatesComponent implements OnInit {
     })
   }
   
+  editAssociateDetails(row:any){
+
+  }
 
   viewAssociate(row:any){
     this.dialog.open(OnboardDialogComponent,{

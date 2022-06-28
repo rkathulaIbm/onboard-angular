@@ -61,7 +61,7 @@
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
           <td mat-cell *matCellDef="let row">
-            <button mat-icon-button  matTooltip="Edit"
+            <button mat-icon-button  (click)="editAssociateDetails(row)" matTooltip="Edit"
              color="primary">
               <mat-icon>edit</mat-icon>
               
