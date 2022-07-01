@@ -42,6 +42,16 @@ export class ApiService {
     return this.http.get<any>(url, { responseType: 'blob' as 'json' });
   }
 
+  getSingleAssociateCompleteDetails(data:any){
+    return this.http.get<any>("http://localhost:9191/pru-associate/get-associate-with-skill-details-by-id/"+data.associateId);
+  
+  }
+  
+  getSkillsDetails(){
+    return this.http.get<any>("http://localhost:9191/pru-skill/get-skill-master");
+  
+  }
+  
   authenticate(formData: LoginRequest): Observable<any> {
     return this.http.post<LoginRequest>(
       `${environment.JWT_API_URL}${this.config.getApiUrl('authenticate')}`,

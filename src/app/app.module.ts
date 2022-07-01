@@ -20,22 +20,28 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { OnboardComponentComponent } from './onboard-component/onboard-component.component';
 import { AllAssociatesComponent } from './all-associates/all-associates.component';
 import { CommonService } from './services/common.service';
 import { HTTPInterceptor } from './interceptor/http-interceptor';
 import { CommonConfig } from './config/common-config';
+import { OnboardComponentComponent } from './onboarding/onboard-component/onboard-component.component';
+import { OnboardingModule } from './onboarding/onboarding.module';
+import { HomeComponent } from './gateway/home/home.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     DialogComponent,
     OnboardDialogComponent,
-    OnboardComponentComponent,
-    AllAssociatesComponent
+    AllAssociatesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
@@ -46,13 +52,12 @@ import { CommonConfig } from './config/common-config';
     MatSelectModule, 
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule,
-    FormsModule,
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTooltipModule
+    MatTooltipModule,
+    OnboardingModule
   ],
   providers: [CommonService, CommonConfig,
     { provide: HTTP_INTERCEPTORS, useClass: HTTPInterceptor, multi: true },],

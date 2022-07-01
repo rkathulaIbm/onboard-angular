@@ -3,12 +3,13 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs';
 import { CommonService } from '../services/common.service';
 import { CommonConfig } from '../config/common-config';
+import { Router } from '@angular/router';
 
 
 
 @Injectable()
 export class HTTPInterceptor implements HttpInterceptor {
-    constructor(private commonService: CommonService, private config: CommonConfig) { }
+    constructor(private commonService: CommonService, private router: Router) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add auth header with jwt if account is logged in and request is to the api url
@@ -22,7 +23,8 @@ export class HTTPInterceptor implements HttpInterceptor {
         }else if(request.url.includes("authenticate")){
             //by-pass this api
         }else{
-            alert("login first")
+            alert("Get out from here!!! login first");
+            this.router.navigate(['/'])
         }
 
         return next.handle(request);

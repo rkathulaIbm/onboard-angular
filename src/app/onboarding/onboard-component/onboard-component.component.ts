@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators, FormControl } from '@angular/forms';
-import { ApiService } from '../services/api.service';
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-onboard-component',
