@@ -1,7 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators, FormControl } from '@angular/forms';
 import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { SkillMasterType } from 'src/app/models/skill-master.model';
 import { ApiService } from 'src/app/services/api.service';
+import { AppState } from 'src/app/state/app.state';
+import * as SkillMasterActions from '../../action/skill-master.action';
 
 @Component({
   selector: 'app-onboard-component',
@@ -26,10 +31,11 @@ export class OnboardComponentComponent implements OnInit {
   onboardForm!:FormGroup;
   skillForm!: FormGroup[];
   dummy:any;
-  constructor(private formBuilder:FormBuilder,private api:ApiService) { }
+  constructor(private formBuilder:FormBuilder,private api:ApiService, private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.getSkillsData();
+   // this.getSkillsData();
+    this.getSkillsDataFromState();
     this.onboardForm=this.formBuilder.group({
 
       associateName:['',Validators.required],
@@ -116,15 +122,21 @@ export class OnboardComponentComponent implements OnInit {
         .subscribe({
           next:(res)=>{
             this.skills=res;
-              
           },
           error:()=>{
             alert("Error");
-  
           },
-  
         })
   }
+
+  getAllStateData: Observable<SkillMasterType[]> | undefined;
+  getSkillsDataFromState=()=>{
+    this.getAllStateData= this.store.select('applicationState');
+    this.getAllStateData.subscribe((res)=>{
+      this.skills= res
+    })
+  }
+
   addNewSkillForm() {
     this.skillForm.push(
       this.formBuilder.group({

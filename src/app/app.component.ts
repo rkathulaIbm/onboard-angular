@@ -1,11 +1,11 @@
-import { Component,Inject, OnInit ,ViewChild} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { OnboardDialogComponent } from './onboard-dialog/onboard-dialog.component';
+import { Component, OnInit} from '@angular/core';
 import { ApiService } from './services/api.service';
-import {MatPaginator} from '@angular/material/paginator';
-import { DialogComponent } from './dialog/dialog.component';
 import { LoginResponse } from './models/login.model';
 import { CommonService } from './services/common.service';
+import { Store } from '@ngrx/store';
+import { AppState } from './state/app.state';
+import * as SkillMasterActions from '../app/action/skill-master.action';
+import { SkillMasterType } from './models/skill-master.model';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +15,10 @@ import { CommonService } from './services/common.service';
 export class AppComponent implements OnInit {
   
   jwtToken: string= '';
-  constructor(private apiService: ApiService, private commonService: CommonService) {}
+  constructor(private apiService: ApiService, private commonService: CommonService, 
+    private store: Store<AppState>) {}
   ngOnInit(): void {
-    
+    this.loadSkills();
   }
 
   doLogin=()=>{
@@ -36,9 +37,14 @@ export class AppComponent implements OnInit {
     })
   }
 
+  loadSkills() {
+    this.apiService.getSkillsDetails().subscribe((res: SkillMasterType[])=>{
+      this.store.dispatch(new SkillMasterActions.loadSkillMaster(res))
+    })
+
+  }
 
   doLogout=()=>{
-
     this.commonService.jwtGloablToken$.next('');
     this.jwtToken='';
   }

@@ -24,9 +24,11 @@ import { AllAssociatesComponent } from './all-associates/all-associates.componen
 import { CommonService } from './services/common.service';
 import { HTTPInterceptor } from './interceptor/http-interceptor';
 import { CommonConfig } from './config/common-config';
-import { OnboardComponentComponent } from './onboarding/onboard-component/onboard-component.component';
 import { OnboardingModule } from './onboarding/onboarding.module';
 import { HomeComponent } from './gateway/home/home.component';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './reducer/skill-master.reducer';
+
 
 
 @NgModule({
@@ -57,7 +59,10 @@ import { HomeComponent } from './gateway/home/home.component';
     MatPaginatorModule,
     MatSortModule,
     MatTooltipModule,
-    OnboardingModule
+    OnboardingModule,
+    StoreModule.forRoot({
+      applicationState: reducer
+    })
   ],
   providers: [CommonService, CommonConfig,
     { provide: HTTP_INTERCEPTORS, useClass: HTTPInterceptor, multi: true },],

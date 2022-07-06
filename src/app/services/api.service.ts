@@ -47,7 +47,7 @@ export class ApiService {
   
   }
   
-  getSkillsDetails(){
+  getSkillsDetails(): Observable<any>{
     return this.http.get<any>("http://localhost:9191/pru-skill/get-skill-master");
   
   }
