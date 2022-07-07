@@ -16,16 +16,18 @@ export class HTTPInterceptor implements HttpInterceptor {
         let isLoggedIn, token;
         isLoggedIn = token = this.commonService?.jwtGloablToken$.getValue();
         
-        if (isLoggedIn) {
-            request = request.clone({
-                setHeaders: { Authorization: `Bearer ${token ?? ''}` }
-            });
-        }else if(request.url.includes("authenticate")){
-            //by-pass this api
-        }else{
-            alert("Get out from here!!! login first");
-            this.router.navigate(['/'])
-        }
+        // for future use of inteceptors : uncomment the below code
+
+        // if (isLoggedIn) {
+        //     request = request.clone({
+        //         setHeaders: { Authorization: `Bearer ${token ?? ''}` }
+        //     });
+        // }else if(request.url.includes("authenticate")){
+        //     //by-pass this api
+        // }else{
+        //     alert("!!! login first");
+        //     this.router.navigate(['/'])
+        // }
 
         return next.handle(request);
     }
