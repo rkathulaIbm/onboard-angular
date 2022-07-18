@@ -5,11 +5,12 @@ import { OnboardComponentComponent } from './onboard-component/onboard-component
 
 const routes: Routes = [
   { path: 'addNewAssociate', component: OnboardComponentComponent },
+  { path: 'editAssociate/:id', component: OnboardComponentComponent },
   { path: 'allAssociates', component: AllAssociatesComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class OnboardingRoutingModule { }
+export class OnboardingRoutingModule {}

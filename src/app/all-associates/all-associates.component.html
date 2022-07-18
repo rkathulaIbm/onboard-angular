@@ -2,6 +2,15 @@
   
   <div class="container">
    <div>
+    <mat-form-field class="dateFilter" >
+      <input matInput [matDatepicker]="filterDatePicker" readonly  [max]="today" placeholder="Choose a date" #dateInput>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="filterDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #filterDatePicker></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="dateFilterBtn" (click)="filterData(dateInput.value)">Search</button>
+    <button mat-raised-button color="primary" class="dateFilterBtn" (click)="clearFilters()">Clear</button>
+   
     <button mat-icon-button (click)="downloadAllAssociatesDetails()"  style="float: right;" color="primary">
       <mat-icon>cloud_download</mat-icon>
     </button>
@@ -9,7 +18,7 @@
   <div style="margin-top:10px;">
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+      <input matInput [(ngModel)]="filterVal" (keyup)="applyFilter($event)" placeholder="" #input>
     </mat-form-field>
     
     <div class="mat-elevation-z8">
