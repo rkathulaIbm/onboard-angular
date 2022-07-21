@@ -7,3 +7,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 14.7rem;
 }
 
+.react-css-style{
+    margin-left: 50px;
+    margin-top: 20px;
+    border: 1px solid green;
+    width: 50%;
+}
+
+.react-css-child-style{
+    margin-left: 50px;
+    margin-top: 20px;
+    border: 1px solid blue;
+    width: 50%;
+}
+
+.angular-css-style {
+    margin-left: 50px;
+    margin-top: 20px;
+    border: 1px solid red;
+    width: 50%;
+}

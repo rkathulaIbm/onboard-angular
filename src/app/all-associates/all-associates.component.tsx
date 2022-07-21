@@ -1,8 +1,8 @@
 
-import { Component,Inject, OnInit ,ViewChild} from '@angular/core';
+import { AfterViewInit, Component,ElementRef,Inject, OnDestroy, OnInit ,ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
-
+import * as React from 'react';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -10,25 +10,33 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { OnboardDialogComponent } from '../onboard-dialog/onboard-dialog.component';
 import { ApiService } from '../services/api.service';
+import * as ReactDOM from 'react-dom';
+import { Sample } from 'src/app/react/Sample.component';
 
+const reactContainerName = 'reactContainer';
 
 @Component({
   selector: 'app-all-associates',
   templateUrl: './all-associates.component.html',
   styleUrls: ['./all-associates.component.scss']
 })
-export class AllAssociatesComponent implements OnInit {
+export class AllAssociatesComponent implements OnInit, AfterViewInit, OnDestroy {
   title = 'MAT';
-  
   displayedColumns: string[] = ['associateName', 'ibmId', 'emailIBM', 'location','role','itExpDate','view/edit','action'];
   tableDataSource!: MatTableDataSource<any>;
-
+  inputMsgFromReact:string='';
+  helloMsgFromReact:string='';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(reactContainerName,{static: true}) reactContainerRef!: ElementRef;
   constructor(public route:Router, public dialog: MatDialog,private http:HttpClient,private api:ApiService) {}
   ngOnInit(): void {
     
     this.getAssociates();
+  }
+
+  ngAfterViewInit(): void {
+    this.renderSampleComponent();
   }
 
   applyFilter(event: Event) {
@@ -38,6 +46,14 @@ export class AllAssociatesComponent implements OnInit {
     if (this.tableDataSource.paginator) {
       this.tableDataSource.paginator.firstPage();
     }
+  }
+
+  actionFromReactComponent(event: any) {
+    this.helloMsgFromReact = 'Hello Vijay From React - ' + event.target.innerHTML;
+  }
+
+  handleOnChangeFromReact(event:any) {
+    this.inputMsgFromReact = event.target.value;
   }
 
   openDialog() {
@@ -62,7 +78,7 @@ export class AllAssociatesComponent implements OnInit {
 
       },
       error:()=>{
-        alert("Error");
+        // alert("Error");
 
       },
 
@@ -101,7 +117,21 @@ export class AllAssociatesComponent implements OnInit {
   // http://localhost:9191/pru-associate/export-excel/00RTV87412
   // http://localhost:9191/pru-associate/export-excel/
 
+  private renderSampleComponent() {
+    ReactDOM.render(
+      <React.StrictMode>
+        <div>
+          <Sample 
+            handleOnChangeFromAngular={(event:any) =>this.handleOnChangeFromReact(event)} 
+            triggerEventFromReact={(event:any) => this.actionFromReactComponent(event)}
+          />
+        </div> 
+      </React.StrictMode>
+      , this.reactContainerRef.nativeElement)
+  }
 
-
+  ngOnDestroy() {
+    ReactDOM.unmountComponentAtNode(this.reactContainerRef.nativeElement);
+}
 
 }

@@ -6,6 +6,17 @@
       <mat-icon>cloud_download</mat-icon>
     </button>
    </div> 
+
+   <!-- Angular container -->
+   <div class="angular-css-style">
+    <h1>Angular - {{inputMsgFromReact}}</h1>
+    <p><strong>{{helloMsgFromReact}}</strong></p>
+    <span>Sending messages from Angular Component</span><input type="text" id="input" />
+  </div>
+
+  <!-- React container -->
+  <div #reactContainer></div>
+  
   <div style="margin-top:10px;">
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
