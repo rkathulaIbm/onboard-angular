@@ -56,6 +56,11 @@ export class AllAssociatesComponent implements OnInit, AfterViewInit, OnDestroy 
     this.inputMsgFromReact = event.target.value;
   }
 
+  routeToRequestComponent(event:any){
+    console.log('route to another component ');
+    this.route.navigate(['angularReact'])
+  }
+
   openDialog() {
     this.dialog.open(OnboardDialogComponent, {
       width:'50%',
@@ -118,20 +123,23 @@ export class AllAssociatesComponent implements OnInit, AfterViewInit, OnDestroy 
   // http://localhost:9191/pru-associate/export-excel/
 
   private renderSampleComponent() {
-    ReactDOM.render(
-      <React.StrictMode>
-        <div>
-          <Sample 
-            handleOnChangeFromAngular={(event:any) =>this.handleOnChangeFromReact(event)} 
-            triggerEventFromReact={(event:any) => this.actionFromReactComponent(event)}
-          />
-        </div> 
-      </React.StrictMode>
-      , this.reactContainerRef.nativeElement)
+      ReactDOM.render(
+        <React.StrictMode>
+          <div>
+            <Sample 
+              handleOnChangeFromAngular={(event:any) =>this.handleOnChangeFromReact(event)} 
+              triggerEventFromReact={(event:any) => this.actionFromReactComponent(event)}
+              navigate={(event:any) => this.routeToRequestComponent(event)}
+            />
+          </div> 
+        </React.StrictMode>
+        , this.reactContainerRef.nativeElement)
   }
 
   ngOnDestroy() {
+    if(this.reactContainerRef) {
     ReactDOM.unmountComponentAtNode(this.reactContainerRef.nativeElement);
+    }
 }
 
 }

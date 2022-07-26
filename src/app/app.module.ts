@@ -28,6 +28,7 @@ import { OnboardingModule } from './onboarding/onboarding.module';
 import { HomeComponent } from './gateway/home/home.component';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './reducer/skill-master.reducer';
+import { AngularReactComponent } from './angular-react/angular-react.component';
 
 
 
@@ -37,7 +38,8 @@ import { reducer } from './reducer/skill-master.reducer';
     DialogComponent,
     OnboardDialogComponent,
     AllAssociatesComponent,
-    HomeComponent
+    HomeComponent,
+    AngularReactComponent
   ],
   imports: [
     BrowserModule,
