@@ -16,12 +16,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AratiComponent } from './arati/arati.component';
 
 
 
 @NgModule({
   declarations: [
-    OnboardComponentComponent
+    OnboardComponentComponent,
+    AratiComponent
   ],
   imports: [
     CommonModule,
