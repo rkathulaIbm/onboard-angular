@@ -12,6 +12,9 @@ import { OnboardDialogComponent } from '../onboard-dialog/onboard-dialog.compone
 import { ApiService } from '../services/api.service';
 import * as ReactDOM from 'react-dom';
 import { Sample } from 'src/app/react/Sample.component';
+import { ExcelService } from '../services/excel.service';
+import associateData from '../../assets/all-associates.json';  
+
 
 const reactContainerName = 'reactContainer';
 
@@ -29,7 +32,9 @@ export class AllAssociatesComponent implements OnInit, AfterViewInit, OnDestroy 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(reactContainerName,{static: true}) reactContainerRef!: ElementRef;
-  constructor(public route:Router, public dialog: MatDialog,private http:HttpClient,private api:ApiService) {}
+  data:any=associateData.associates;
+  constructor(private excelService:ExcelService,public route:Router, public dialog: MatDialog,private http:HttpClient,private api:ApiService) {}
+  
   ngOnInit(): void {
     
     this.getAssociates();
@@ -135,7 +140,9 @@ export class AllAssociatesComponent implements OnInit, AfterViewInit, OnDestroy 
         </React.StrictMode>
         , this.reactContainerRef.nativeElement)
   }
-
+  exportAsXLSX():void {
+    this.excelService.exportAsExcelFile(this.data, 'all-associates');
+  }
   ngOnDestroy() {
     if(this.reactContainerRef) {
     ReactDOM.unmountComponentAtNode(this.reactContainerRef.nativeElement);

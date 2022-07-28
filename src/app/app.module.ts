@@ -29,6 +29,7 @@ import { HomeComponent } from './gateway/home/home.component';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './reducer/skill-master.reducer';
 import { AngularReactComponent } from './angular-react/angular-react.component';
+import { ExcelService } from './services/excel.service';
 
 
 
@@ -66,7 +67,7 @@ import { AngularReactComponent } from './angular-react/angular-react.component';
       applicationState: reducer
     })
   ],
-  providers: [CommonService, CommonConfig,
+  providers: [CommonService, CommonConfig,ExcelService,
     { provide: HTTP_INTERCEPTORS, useClass: HTTPInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
