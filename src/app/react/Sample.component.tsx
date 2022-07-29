@@ -64,9 +64,6 @@ export const Sample: FunctionComponent<ISampleComponentProps> = (props: ISampleC
             <li><Link to={'/UploadDeleteDocComponent'} className="nav-link"> Upload delete Documents Component </Link></li>
             <button onClick={routeToPage} id="routeId">Navigate To Angular Page</button>
           </ul>
-          {/* <ul>
-            <button onClick={routeToPage} id="routeId">Upload delete Documents</button>
-          </ul> */}
           
           <hr />
           <Routes >
