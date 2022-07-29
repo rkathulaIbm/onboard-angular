@@ -17,6 +17,14 @@ const CheckListMainComponent = () => {
   };
   return (
     <>
+      <Typography
+        style={{ margin: "20px" }}
+        variant="h2"
+        color="black"
+        sx={{ textDecoration: "underline" }}
+      >
+        <strong>Template Change Control Summary of Changes</strong>
+      </Typography>
       <TemplateSummary />
       <Typography
         style={{ margin: "20px" }}
@@ -24,7 +32,7 @@ const CheckListMainComponent = () => {
         color="red"
         sx={{ textDecoration: "underline" }}
       >
-        Prudential Retirement Services On-boarding Checklist
+        <strong>Prudential Retirement Services On-boarding Checklist</strong>
       </Typography>
 
       {/* <Form onInfoSubmit={handleInfoDetails} sendInfo={info} />
