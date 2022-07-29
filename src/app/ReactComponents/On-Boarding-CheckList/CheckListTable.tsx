@@ -46,10 +46,13 @@ const CheckListTable = (props: any) => {
         }
         return data;
       });
-      props.onCheckListSubmit({ infoDetails, checkListDetails: newData });
       return newData;
     });
   };
+
+  useEffect(() => {
+    props.onCheckListSubmit({ infoDetails, checkListDetails: tableValues });
+  }, [tableValues]);
 
   return (
     <Fragment>
