@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes , Route, Link } from 'react-router-dom'
 
 import TrainingLinkComponent from './TrainingLinkComponent';
 import CheckPointPageComponent from  './CheckPointPageComponent';
+import UploadDeleteDocComponent from './upload-delete-doc/UploadDeleteDocComponent';
 
 import { FunctionComponent } from 'react';
 import Child from './Child.component';
@@ -60,13 +61,18 @@ export const Sample: FunctionComponent<ISampleComponentProps> = (props: ISampleC
         <ul className="navbar-nav mr-auto">
             <li><Link to={'/CheckPointPageComponent'} className="nav-link"> CheckPointPageComponent </Link></li>
             <li><Link to={'/TrainingLinkComponent'} className="nav-link"> TrainingLinkComponent </Link></li>
+            <li><Link to={'/UploadDeleteDocComponent'} className="nav-link"> Upload delete Documents Component </Link></li>
             <button onClick={routeToPage} id="routeId">Navigate To Angular Page</button>
           </ul>
+          {/* <ul>
+            <button onClick={routeToPage} id="routeId">Upload delete Documents</button>
+          </ul> */}
           
           <hr />
           <Routes >
               <Route path='/CheckPointPageComponent' element={<CheckPointPageComponent />} />
               <Route path='/TrainingLinkComponent' element={<TrainingLinkComponent />} />
+              <Route path='/UploadDeleteDocComponent' element={<UploadDeleteDocComponent />} />
          </Routes >
     </div>
  </Router>
