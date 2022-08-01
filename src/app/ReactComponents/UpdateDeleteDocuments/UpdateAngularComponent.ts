@@ -28,7 +28,7 @@ import {
   
     private render() {
       ReactDOM.render(
-        React.createElement(UploadDeleteDocComponent),
+       React.createElement(UploadDeleteDocComponent),
         document.getElementById('root')
       );
     }

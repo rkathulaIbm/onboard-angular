@@ -82,8 +82,8 @@ export default class UploadDeleteDocComponent extends React.Component<any,state>
                     };
                 });
 
-        // axios.delete(`http://localhost:9003/delete/${name}`)
-        // .then(result => console.log(result))
+        axios.delete(`http://localhost:9003/delete/${name}`)
+         .then(result => console.log(result))
     }
 
     callUploadAPI() {
