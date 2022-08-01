@@ -12,6 +12,13 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
     </mat-form-field>
     
+    <ng-container *ngIf="!isDataLoaded; else tableData">
+    <div class="spinner-container">
+      <span class="fa fa-spinner fa-spin fa-2x"></span>
+    </div>
+    </ng-container>
+
+    <ng-template #tableData>
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="tableDataSource"  matSort>
     
@@ -88,7 +95,7 @@
     
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
     </div>
-    
+  </ng-template>
   </div>
   
   </div>

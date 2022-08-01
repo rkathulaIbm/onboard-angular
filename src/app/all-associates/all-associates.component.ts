@@ -10,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { OnboardDialogComponent } from '../onboard-dialog/onboard-dialog.component';
 import { ApiService } from '../services/api.service';
-
+import { ExcelService } from '../services/excel.service';
+import { allAssociates } from "../../json/response/all-associates";  
 
 @Component({
   selector: 'app-all-associates',
@@ -19,15 +20,15 @@ import { ApiService } from '../services/api.service';
 })
 export class AllAssociatesComponent implements OnInit {
   title = 'MAT';
-  
+  isDataLoaded:boolean = false;
   displayedColumns: string[] = ['associateName', 'ibmId', 'emailIBM', 'location','role','itExpDate','view/edit','action'];
   tableDataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(public route:Router, public dialog: MatDialog,private http:HttpClient,private api:ApiService) {}
+  constructor(public route:Router, public dialog: MatDialog,private http:HttpClient,private api:ApiService, private excelService:ExcelService) {}
+  
   ngOnInit(): void {
-    
     this.getAssociates();
   }
 
@@ -54,23 +55,21 @@ export class AllAssociatesComponent implements OnInit {
     this.api.getAssociates()
     .subscribe({
       next:(res:any)=>{
-        
-        console.log(res);
          this.tableDataSource=new MatTableDataSource(res);
          this.tableDataSource.paginator=this.paginator;
          this.tableDataSource.sort=this.sort;
-
+         this.isDataLoaded=true;
       },
       error:()=>{
-        alert("Error");
-
+        console.log('Error getAssociates');
+        this.tableDataSource=new MatTableDataSource(allAssociates);
+        this.isDataLoaded=true;
       },
 
     })
   }
   
   editAssociateDetails(row:any){
-    
     this.route.navigate(['/addNewAssociate']);
   }
 
@@ -83,14 +82,17 @@ export class AllAssociatesComponent implements OnInit {
 
   
   downloadAllAssociatesDetails(){
-    let url="http://localhost:9191/pru-associate/export-excel/"
-    window.location.assign(url);
+    // let url="http://localhost:9191/pru-associate/export-excel/"
+    // window.location.assign(url);
+    this.excelService.exportAsExcelFile(allAssociates, 'all-associates');
   }
 
-  downloadIndividualAssociateDetails(data:any){
+  downloadIndividualAssociateDetails(individualAssociate:any){
     // 12234a
-    let url="http://localhost:9191/pru-associate/export-excel/"+data.ibmId;
-    window.location.assign(url);
+    // let url="http://localhost:9191/pru-associate/export-excel/"+data.ibmId;
+    // window.location.assign(url);
+    console.log('individual data ',individualAssociate);
+    this.excelService.exportAsExcelFile([individualAssociate], 'individual-associates');
   }
 
   deleteAssociate(row:any){
@@ -100,8 +102,6 @@ export class AllAssociatesComponent implements OnInit {
 
   // http://localhost:9191/pru-associate/export-excel/00RTV87412
   // http://localhost:9191/pru-associate/export-excel/
-
-
 
 
 }

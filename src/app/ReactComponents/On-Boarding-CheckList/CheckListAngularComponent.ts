@@ -12,7 +12,7 @@ import CheckListMainComponent from './CheckListMainComponent';
 
 @Component({
   selector: 'app-checkListAngularComponent',
-  template: '<div id="root"></div>',
+  template: '<div class="checklist" id="root"></div>',
 })
 export class CheckListAngularComponent
   implements OnChanges, AfterViewInit, OnDestroy

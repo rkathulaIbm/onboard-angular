@@ -1,10 +1,11 @@
 <mat-toolbar color="primary">
-  <span>Onboarding Application</span>
+  <span class="onboarding-title" (click)="doRefresh()">Onboarding Application</span>
   <span class="example-spacer"></span>
   <button
     *ngIf="!jwtToken"
     mat-raised-button
     color="success"
+    style="margin-right: 10px"
     (click)="doLogin()"
   >
     Login
@@ -37,9 +38,6 @@
     On-Boarding CheckList
   </button>
 </mat-toolbar>
-<router-outlet></router-outlet>
 
-<div class="welcomeDiv">
-  <p class="welcomeText">Welcome to Onboarding Application</p>
-</div>
-{{ jwtToken }}
+<router-outlet></router-outlet>
+<!-- {{ jwtToken }} -->

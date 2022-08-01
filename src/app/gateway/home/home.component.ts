@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  isMsgShown: boolean = true;
+  constructor(private commonService: CommonService) { }
 
   ngOnInit(): void {
+    this.commonService.isMsgShown$.subscribe(data => this.isMsgShown = data);
+  }
+
+  onActivate() {
+    this.isMsgShown = false;
   }
 
 }
