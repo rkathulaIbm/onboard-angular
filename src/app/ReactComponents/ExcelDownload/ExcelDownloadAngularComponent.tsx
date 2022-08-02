@@ -38,7 +38,7 @@ export class ExcelDownloadAngularComponent implements OnInit, OnChanges, AfterVi
             <React.StrictMode>
                 <div>
                     <ExcelDownloadReactComponent 
-                    excelData = {this.inputDataToExport}
+                    inputExcelData = {this.inputDataToExport}
                     />
                 </div>
             </React.StrictMode>,

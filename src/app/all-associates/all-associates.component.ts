@@ -1,5 +1,5 @@
 
-import { Component,Inject, OnInit ,ViewChild} from '@angular/core';
+import { AfterViewInit, Component,Inject, OnInit ,ViewChild} from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
@@ -18,7 +18,7 @@ import { allAssociates } from "../../json/response/all-associates";
   templateUrl: './all-associates.component.html',
   styleUrls: ['./all-associates.component.scss']
 })
-export class AllAssociatesComponent implements OnInit {
+export class AllAssociatesComponent implements OnInit, AfterViewInit {
   title = 'MAT';
   isDataLoaded:boolean = false;
   displayedColumns: string[] = ['associateName', 'ibmId', 'emailIBM', 'location','role','itExpDate','view/edit','action'];
@@ -30,6 +30,10 @@ export class AllAssociatesComponent implements OnInit {
   
   ngOnInit(): void {
     this.getAssociates();
+  }
+
+  ngAfterViewInit() {
+    this.tableDataSource.paginator = this.paginator;
   }
 
   applyFilter(event: Event) {
@@ -63,6 +67,8 @@ export class AllAssociatesComponent implements OnInit {
       error:()=>{
         console.log('Error getAssociates');
         this.tableDataSource=new MatTableDataSource(allAssociates);
+        this.tableDataSource.paginator=this.paginator;
+        this.tableDataSource.sort=this.sort;
         this.associateData = allAssociates;
         this.isDataLoaded=true;
       },
