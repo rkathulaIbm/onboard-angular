@@ -1,5 +1,5 @@
 
-import { Component,Inject, OnInit ,ViewChild} from '@angular/core';
+import { AfterViewInit, Component,Inject, OnInit ,ViewChild} from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
@@ -18,18 +18,22 @@ import { allAssociates } from "../../json/response/all-associates";
   templateUrl: './all-associates.component.html',
   styleUrls: ['./all-associates.component.scss']
 })
-export class AllAssociatesComponent implements OnInit {
+export class AllAssociatesComponent implements OnInit, AfterViewInit {
   title = 'MAT';
   isDataLoaded:boolean = false;
   displayedColumns: string[] = ['associateName', 'ibmId', 'emailIBM', 'location','role','itExpDate','view/edit','action'];
   tableDataSource!: MatTableDataSource<any>;
-
+  associateData:any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(public route:Router, public dialog: MatDialog,private http:HttpClient,private api:ApiService, private excelService:ExcelService) {}
   
   ngOnInit(): void {
     this.getAssociates();
+  }
+
+  ngAfterViewInit() {
+    this.tableDataSource.paginator = this.paginator;
   }
 
   applyFilter(event: Event) {
@@ -63,6 +67,9 @@ export class AllAssociatesComponent implements OnInit {
       error:()=>{
         console.log('Error getAssociates');
         this.tableDataSource=new MatTableDataSource(allAssociates);
+        this.tableDataSource.paginator=this.paginator;
+        this.tableDataSource.sort=this.sort;
+        this.associateData = allAssociates;
         this.isDataLoaded=true;
       },
 
