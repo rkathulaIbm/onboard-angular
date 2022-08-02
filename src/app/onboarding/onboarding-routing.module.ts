@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AllAssociatesComponent } from '../all-associates/all-associates.component';
+import { CheckListAngularComponent } from '../ReactComponents/On-Boarding-CheckList/CheckListAngularComponent';
+import { UpdateAngularComponent } from '../ReactComponents/UpdateDeleteDocuments/UpdateAngularComponent';
 import { OnboardComponentComponent } from './onboard-component/onboard-component.component';
 
 const routes: Routes = [
   { path: 'addNewAssociate', component: OnboardComponentComponent },
   { path: 'allAssociates', component: AllAssociatesComponent },
+  { path: 'checkList', component: CheckListAngularComponent },
+  { path: 'updatedoc', component: UpdateAngularComponent },
 ];
 
 @NgModule({

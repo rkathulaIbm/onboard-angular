@@ -124,7 +124,7 @@ export class OnboardComponentComponent implements OnInit {
             this.skills=res;
           },
           error:()=>{
-            alert("Error");
+            console.log('error getSkillsDetails ');
           },
         })
   }
@@ -179,7 +179,7 @@ export class OnboardComponentComponent implements OnInit {
             alert("Associate added successfully");
           },
           error:()=>{
-            alert("Error");
+            console.log('error postAssociate ');
           },
         })
       }
@@ -251,14 +251,9 @@ export class OnboardComponentComponent implements OnInit {
 
         },
         error:()=>{
-          alert("Error");
-
+          console.log('error postAssociate');
         },
-
       })
     // }
   }
-
-  
-
 }
