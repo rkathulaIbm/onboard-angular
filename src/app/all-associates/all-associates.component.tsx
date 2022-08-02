@@ -14,9 +14,17 @@ import * as ReactDOM from 'react-dom';
 import { Sample } from 'src/app/react/Sample.component';
 import { ExcelService } from '../services/excel.service';
 import associateData from '../../assets/all-associates.json';  
+import * as FileSaver from 'file-saver';
+import * as XLSX from 'xlsx';
+import { BsFillCloudArrowDownFill } from 'react-icons/bs';
 
+
+
+const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+const EXCEL_EXTENSION = '.xlsx';
 
 const reactContainerName = 'reactContainer';
+const exportContainerName='exportContainer'
 
 @Component({
   selector: 'app-all-associates',
@@ -32,6 +40,7 @@ export class AllAssociatesComponent implements OnInit, AfterViewInit, OnDestroy 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(reactContainerName,{static: true}) reactContainerRef!: ElementRef;
+  @ViewChild(exportContainerName,{static: true}) exportContainerRef!: ElementRef;
   data:any=associateData.associates;
   constructor(private excelService:ExcelService,public route:Router, public dialog: MatDialog,private http:HttpClient,private api:ApiService) {}
   
@@ -42,6 +51,7 @@ export class AllAssociatesComponent implements OnInit, AfterViewInit, OnDestroy 
 
   ngAfterViewInit(): void {
     this.renderSampleComponent();
+    this.exportFunctionality();
   }
 
   applyFilter(event: Event) {
@@ -140,13 +150,74 @@ export class AllAssociatesComponent implements OnInit, AfterViewInit, OnDestroy 
         </React.StrictMode>
         , this.reactContainerRef.nativeElement)
   }
-  exportAsXLSX():void {
-    this.excelService.exportAsExcelFile(this.data, 'all-associates');
-  }
+  private exportFunctionality() {
+    const exportAsXLSX=()=> {
+      const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.data);
+      var wscols = [
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30},
+        {wch:30}
+    ];
+    
+    worksheet['!cols'] = wscols;
+      const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+      const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+      const data: Blob = new Blob([excelBuffer], {
+        type: EXCEL_TYPE
+      });
+      FileSaver.saveAs(data, "Allassociates" + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+    }
+    ReactDOM.render(
+      <React.StrictMode>
+        <div>
+        <span onClick={exportAsXLSX}>
+        <BsFillCloudArrowDownFill/>
+        </span> 
+        </div> 
+      </React.StrictMode>
+      , this.exportContainerRef.nativeElement)
+    }
+  
   ngOnDestroy() {
     if(this.reactContainerRef) {
     ReactDOM.unmountComponentAtNode(this.reactContainerRef.nativeElement);
     }
+    if(this.exportContainerRef) {
+      ReactDOM.unmountComponentAtNode(this.exportContainerRef.nativeElement);
+      }
 }
 
 }
