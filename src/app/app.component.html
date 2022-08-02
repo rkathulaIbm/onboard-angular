@@ -34,10 +34,21 @@
   >
     All Associates
   </button>
-  <button mat-raised-button color="success" routerLink="/home/checkList">
+  <button 
+    mat-raised-button color="success" 
+    routerLink="/home/associate/checkList"
+    >
     On-Boarding CheckList
+  </button>
+  <button 
+    style="margin-left: 10px" 
+    mat-raised-button color="success" 
+    routerLink="/home/associate/updatedoc"
+    >
+    Upload Documents
   </button>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
+
 <!-- {{ jwtToken }} -->

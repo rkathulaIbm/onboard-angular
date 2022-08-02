@@ -8,13 +8,14 @@ import {
 } from '@angular/core';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import CheckListMainComponent from './CheckListMainComponent';
+import UploadDeleteDocComponent from './UploadDeleteDocComponent';
+
 
 @Component({
-  selector: 'app-checkListAngularComponent',
-  template: '<div class="checklist" id="checkListId"></div>',
+  selector: 'app-updateAngularComponent',
+  template: '<div id="uploadDeleteDoc"></div>',
 })
-export class CheckListAngularComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+export class UpdateAngularComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.render();
@@ -23,15 +24,18 @@ export class CheckListAngularComponent implements OnInit, OnChanges, AfterViewIn
   ngOnChanges(changes: SimpleChanges): void {
     this.render();
   }
+  
   ngAfterViewInit(): void {
     this.render();
   }
+
   ngOnDestroy(): void { }
 
   private render() {
     ReactDOM.render(
-      React.createElement(CheckListMainComponent),
-      document.getElementById('checkListId')
+      React.createElement(UploadDeleteDocComponent),
+      document.getElementById('uploadDeleteDoc')
     );
   }
+
 }
