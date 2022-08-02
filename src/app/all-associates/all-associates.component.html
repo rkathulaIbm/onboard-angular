@@ -1,11 +1,11 @@
 
   
   <div class="container">
-   <div>
-    <button mat-icon-button (click)="downloadAllAssociatesDetails()"  style="float: right;" color="primary">
-      <mat-icon>cloud_download</mat-icon>
-    </button>
-   </div> 
+
+  <div *ngIf="isDataLoaded" class="download-wrapper">
+    <app-excelDownloadAngularComponent [inputDataToExport]="associateData"></app-excelDownloadAngularComponent>
+  </div>
+  
   <div style="margin-top:10px;">
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
