@@ -204,7 +204,7 @@ export class AllAssociatesComponent implements OnInit, AfterViewInit, OnDestroy 
       <React.StrictMode>
         <div>
         <span onClick={exportAsXLSX}>
-        <BsFillCloudArrowDownFill/>
+        <BsFillCloudArrowDownFill size={30} fill={"#3f51b5"}/>
         </span> 
         </div> 
       </React.StrictMode>
