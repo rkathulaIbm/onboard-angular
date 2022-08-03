@@ -9,20 +9,22 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Form from "./Form";
 import CheckListTable from "./CheckListTable";
-export default function VerticalLinearStepper() {
+const VerticalLinearStepper = () => {
   const [info, setInfo] = React.useState("");
-  const [data, setData] = React.useState("");
+  const [onBoardingData, setOnBoardingData] = React.useState({});
   const handleInfoDetails = (data: any) => {
-    setInfo(data);
+    setInfo(data.info);
+    setOnBoardingData({ checkListDetails: data.result });
     handleNext();
   };
   const handleChecklistDetails = (data: any) => {
-    setData(data);
+    setOnBoardingData(data);
   };
   const infoDetails = <Form onInfoSubmit={handleInfoDetails} sendInfo={info} />;
   const checkList = (
     <CheckListTable
       infoData={info}
+      onBoardingData={onBoardingData}
       onCheckListSubmit={handleChecklistDetails}
     />
   );
@@ -43,7 +45,7 @@ export default function VerticalLinearStepper() {
 
   const handleNext = (buttonName?: any) => {
     if (buttonName === "Submit") {
-      console.log("Submit Button: ", data);
+      console.log("Submit Button: ", info, onBoardingData);
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -75,7 +77,7 @@ export default function VerticalLinearStepper() {
             <StepContent>
               {step.description}
               {step.buttonName && (
-                <Box sx={{ mb: 2 }}>
+                <Box sx={{ mt: 2 }}>
                   <div>
                     <Button
                       variant="contained"
@@ -107,4 +109,6 @@ export default function VerticalLinearStepper() {
       )}
     </Box>
   );
-}
+};
+
+export default VerticalLinearStepper;
