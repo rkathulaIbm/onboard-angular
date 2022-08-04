@@ -1,5 +1,7 @@
 <mat-toolbar color="primary">
-  <span class="onboarding-title" (click)="doRefresh()">Onboarding Application</span>
+  <span class="onboarding-title" (click)="doRefresh()"
+    >Onboarding Application</span
+  >
   <span class="example-spacer"></span>
   <button
     *ngIf="!jwtToken"
@@ -30,22 +32,35 @@
     style="margin-right: 10px"
     mat-raised-button
     color="success"
+    routerLink="/home/associate/aratirouting"
+  >
+    Date Filter
+  </button>
+  <button
+    style="margin-right: 10px"
+    mat-raised-button
+    color="success"
     routerLink="/home/associate/allAssociates"
   >
     All Associates
   </button>
-  <button 
-    mat-raised-button color="success" 
+  <button
+    mat-raised-button
+    color="success"
     routerLink="/home/associate/checkList"
-    >
+  >
     On-Boarding CheckList
   </button>
-  <button 
-    style="margin-left: 10px" 
-    mat-raised-button color="success" 
+  <button
+    style="margin-left: 10px"
+    mat-raised-button
+    color="success"
     routerLink="/home/associate/updatedoc"
-    >
+  >
     Upload Documents
+  </button>
+  <button mat-raised-button color="success" routerLink="/comment">
+    Comments
   </button>
 </mat-toolbar>
 
