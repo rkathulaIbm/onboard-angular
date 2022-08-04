@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import App from 'src/app/ReactComponents/On-Boarding-CheckList/App';
+import App from 'src/app/ReactComponents/App';
 
 const aratiContainerName = 'arati';
 

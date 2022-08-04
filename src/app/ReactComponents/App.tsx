@@ -7,17 +7,23 @@ import DTPicker from "./DTPicker";
 import { BrowserModule } from '@angular/platform-browser';  
 import { NgModule } from '@angular/core';   
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';   
+//import { AgGridModule } from 'ag-grid-angular'; 
+//import 'ag-grid-community/dist/styles/ag-grid.css';
+//import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+//import DataTable from 'react-data-table-component';
 import { any } from "prop-types";
-//import { DateRangePicker } from 'react-dates';
 import { GridApi, GridReadyEvent } from "ag-grid-community";
+import { NonNullableFormBuilder } from "@angular/forms";
+
 
 const App = () => {
-  //const [gridApi, setGridApi] = React.useState<any | []>([]);
+  
   const [gridColumnApi, setGridColumnApi] = React.useState<any | []>([]);
   const [rowData, setRowData] = React.useState<any | []>([]);
-  //const [gridApi, setGridApi] = React.useState<GridApi | undefined>();
-  const [gridApi, setGridApi] = React.useState<any | []>();
+ // const [gridApi, setGridApi] = React.useState<GridApi | undefined>();
+  const [gridApi, setGridApi] = React.useState<any | []>([]);
   //const [gridApi, setFilterModel] = React.useState<any | []>([]);
+  
   const [dataSet] = React.useState([
     { id: 1, eventTimestamp: '2020-10-25T04:34:21Z' },
     { id: 2, eventTimestamp: '2020-04-23T20:21:55Z' },
@@ -60,7 +66,6 @@ const App = () => {
   const resetAppliedFilters = () => {
     gridApi.setFilterModel(null);
   };
-  
   const cols = [
     {
       field: "id",
@@ -95,10 +100,10 @@ const App = () => {
       }
     }
   ];
-/*const handleGridReady = (event: GridReadyEvent) => {
+const handleGridReady = (event: GridReadyEvent) => {
   setGridApi(event.api);
   setGridColumnApi(event.columnApi);
-};**/
+};
 
  
  
@@ -128,8 +133,6 @@ const App = () => {
       
       <div
         className="ag-theme-alpine"
-        /* style={{ height: 400, width: 600 }}*/
-        /**className={"ag-theme-balham"}*/
         style={{ height: "86vh", width: "100%" }}
       >
         <AgGridReact
