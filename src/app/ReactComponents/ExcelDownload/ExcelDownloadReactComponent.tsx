@@ -23,9 +23,20 @@ const ExcelDownloadReactComponent: React.FunctionComponent<
     // });
     setIExcelData(props.inputExcelData);
     console.log("excel data ", props.inputExcelData);
-    if (props.inputExcelData.checkListDetails)
-      exportAsExcelFile(props.inputExcelData.checkListDetails, "CheckList");
-    else exportAsExcelFile(props.inputExcelData, "AllAssociates");
+    if (props.inputExcelData.checkListDetails) {
+      let checkListExceldata = props.inputExcelData.checkListDetails.map(
+        (data: any) => {
+          let updatedData = {
+            Question: data.questions,
+            Date: data.date,
+            Status: data.status,
+            Comment: data.comment,
+          };
+          return updatedData;
+        }
+      );
+      exportAsExcelFile(checkListExceldata, "CheckList");
+    } else exportAsExcelFile(props.inputExcelData, "AllAssociates");
   };
 
   const exportAsExcelFile = (json: any[], excelFileName: string): void => {
