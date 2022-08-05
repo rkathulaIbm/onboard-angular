@@ -40,7 +40,7 @@ const CheckListTable = (props: any) => {
   const handleChange = (event: any, id: any, keyName: any) => {
     setTableValues((prevState: any) => {
       const newData = prevState.map((data: any) => {
-        if (data.id === id) {
+        if (data.checkListId === id) {
           if (keyName === "date") return { ...data, date: event.target.value };
           if (keyName === "comment")
             return { ...data, comment: event.target.value };
@@ -111,7 +111,7 @@ const CheckListTable = (props: any) => {
                             variant="standard"
                             value={tableValue.date}
                             onChange={(e: any) =>
-                              handleChange(e, tableValue.id, "date")
+                              handleChange(e, tableValue.checkListId, "date")
                             }
                           />
                         </TableCell>
@@ -120,7 +120,7 @@ const CheckListTable = (props: any) => {
                             displayEmpty
                             value={tableValue.status}
                             onChange={(e) =>
-                              handleChange(e, tableValue.id, "status")
+                              handleChange(e, tableValue.checkListId, "status")
                             }
                             inputProps={{ "aria-label": "Without label" }}
                           >
@@ -136,7 +136,11 @@ const CheckListTable = (props: any) => {
                           <Input
                             value={tableValue.comment}
                             onChange={(e) => {
-                              handleChange(e, tableValue.id, "comment");
+                              handleChange(
+                                e,
+                                tableValue.checkListId,
+                                "comment"
+                              );
                             }}
                           />
                         </TableCell>

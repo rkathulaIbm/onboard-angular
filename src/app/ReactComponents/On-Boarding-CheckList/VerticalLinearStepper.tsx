@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Form from "./Form";
 import CheckListTable from "./CheckListTable";
+import ExcelDownloadReactComponent from "../ExcelDownload/ExcelDownloadReactComponent";
 const VerticalLinearStepper = () => {
   const [info, setInfo] = React.useState("");
   const [onBoardingData, setOnBoardingData] = React.useState({});
@@ -20,7 +21,9 @@ const VerticalLinearStepper = () => {
   const handleChecklistDetails = (data: any) => {
     setOnBoardingData(data);
   };
+
   const infoDetails = <Form onInfoSubmit={handleInfoDetails} sendInfo={info} />;
+
   const checkList = (
     <CheckListTable
       infoData={info}
@@ -105,6 +108,7 @@ const VerticalLinearStepper = () => {
           <Typography>
             All steps completed - you&apos;re finished. Sent to review.
           </Typography>
+          <ExcelDownloadReactComponent inputExcelData={onBoardingData} />
         </Paper>
       )}
     </Box>
