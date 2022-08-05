@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CheckListAngularComponent } from '../ReactComponents/On-Boarding-CheckList/CheckListAngularComponent';
 import { HomeComponent } from './home/home.component';
-import {UpdateAngularComponent} from "../ReactComponents/UpdateDeleteDocuments/UpdateAngularComponent"
 
 const routes: Routes = [
   {
@@ -15,15 +13,7 @@ const routes: Routes = [
           import('../onboarding/onboarding.module').then(
             (m) => m.OnboardingModule
           ),
-      },
-      {
-        path: 'checkList',
-        component: CheckListAngularComponent,
-      },
-      {
-        path: 'updatedoc',
-        component: UpdateAngularComponent,
-      },
+      }
     ],
   },
 ];

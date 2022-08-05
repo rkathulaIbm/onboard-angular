@@ -1,37 +1,48 @@
 .example-spacer {
-    flex: 1 1 auto;
-  }
-  .mat-toolbar.mat-primary {
-    background: #009879;
-    color: #fff;
-}
-  table {
-    width: 100%;
-  }
-  
-  .mat-form-field { 
-    font-size: 14px;
-    width: 100%;
-  }
-  
-  .mat-success {
-    background-color: #0d473b;
-    color: #fff;
+  flex: 1 1 auto;
 }
 
-  .container{
-max-width:1200px;
-margin:0 auto;
-  }
+.mat-toolbar.mat-primary {
+  background: #009879;
+  color: #fff;
+}
 
-  .welcomeDiv{
-    //height: 100%;
-    width: 100%;
-    margin: auto;
-    margin-top: 150px;
-    width: 30%;
-  }
+table {
+  width: 100%;
+}
 
-  .welcomeText{
-    font-size: 20px;
-  }
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-success {
+  background-color: #0d473b;
+  color: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.welcomeDiv {
+  //height: 100%;
+  width: 100%;
+  margin: auto;
+  margin-top: 150px;
+  width: 30%;
+}
+
+.welcomeText {
+  font-size: 20px;
+}
+
+.onboarding-title {
+  cursor: pointer;
+}
+
+.onboarding-title:hover {
+  color: black;
+}

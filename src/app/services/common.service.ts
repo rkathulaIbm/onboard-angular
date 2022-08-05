@@ -11,5 +11,6 @@ export class CommonService {
   constructor(private http: HttpClient) {}
   
   jwtGloablToken$= new BehaviorSubject<string>("");
+  isMsgShown$= new BehaviorSubject<boolean>(true);
 
 }

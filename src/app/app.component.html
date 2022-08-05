@@ -1,10 +1,13 @@
 <mat-toolbar color="primary">
-  <span>Onboarding Application</span>
+  <span class="onboarding-title" (click)="doRefresh()"
+    >Onboarding Application</span
+  >
   <span class="example-spacer"></span>
   <button
     *ngIf="!jwtToken"
     mat-raised-button
     color="success"
+    style="margin-right: 10px"
     (click)="doLogin()"
   >
     Login
@@ -29,19 +32,46 @@
     style="margin-right: 10px"
     mat-raised-button
     color="success"
+    routerLink="/home/associate/aratirouting"
+  >
+    Date Filter
+  </button>
+  <button
+    style="margin-right: 10px"
+    mat-raised-button
+    color="success"
     routerLink="/home/associate/allAssociates"
   >
     All Associates
   </button>
-  <button mat-raised-button color="success" routerLink="/home/checkList">
+  <button
+    mat-raised-button
+    color="success"
+    routerLink="/home/associate/checkList"
+  >
     On-Boarding CheckList
   </button>
-  <button style="margin-left: 10px" mat-raised-button color="success" routerLink="/home/updatedoc">Upload Documents</button>
+  <button
+    style="margin-left: 10px"
+    mat-raised-button
+    color="success"
+    routerLink="/home/associate/updatedoc"
+  >
+    Upload Documents
+  </button>
+  <button mat-raised-button color="success" routerLink="/comment">
+    Comments
+  </button>
+  <button
+    style="margin-right: 10px"
+    mat-raised-button
+    color="success"
+    routerLink="/home/associate/training"
+  >
+    Training Links
+  </button>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
 
-<div class="welcomeDiv">
-  <p class="welcomeText">Welcome to Onboarding Application</p>
-</div>
-{{ jwtToken }}
+<!-- {{ jwtToken }} -->

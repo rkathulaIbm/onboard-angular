@@ -13,6 +13,7 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
+import axios from "axios";
 
 const Form = (props: any) => {
   const sendInfo = props.sendInfo;
@@ -25,11 +26,12 @@ const Form = (props: any) => {
     onBoardingCompletionDate: sendInfo.onBoardingCompletionDate
       ? sendInfo.onBoardingCompletionDate
       : new Date(),
-    isIBMNewHire: sendInfo.isIBMNewHire ? sendInfo.isIBMNewHire : "Y/N",
+    isIBMNewHire: sendInfo.isIBMNewHire ? sendInfo.isIBMNewHire : "",
   };
   const [info, setInfo] = useState(data);
-  const [isButtonHidden, setIsButtonHidden] = useState(false);
+  const [error, setError] = useState("");
   const handleChange = (e: any, keyName: any) => {
+    setError("");
     if (keyName === "onBoardingDate")
       return setInfo({ ...info, onBoardingDate: e });
     else if (keyName === "employeeName")
@@ -42,12 +44,29 @@ const Form = (props: any) => {
       return setInfo({ ...info, onBoardingCompletionDate: e });
   };
   const handleSubmit = () => {
-    setIsButtonHidden(true);
-    props.onInfoSubmit(info);
+    if (
+      info.employeeName !== "" &&
+      info.coordinatorName !== "" &&
+      info.isIBMNewHire !== ""
+    ) {
+      axios
+        .get(
+          "http://localhost:9094/onboarding_checklist/get-all-onboarding-checklist"
+        )
+        .then((result) => {
+          props.onInfoSubmit({ info, result: result.data });
+        });
+      setError("");
+    } else setError("Complete the required fields.");
   };
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
+        {error && (
+          <Typography component="p" color="red">
+            {error}
+          </Typography>
+        )}
         <Grid container spacing={2} alignItems="center" justifyContent="center">
           <Grid item xs={8} md={6} lg={3}>
             <Typography id="employeeName" variant="h3" style={{ margin: 0 }}>
@@ -81,6 +100,7 @@ const Form = (props: any) => {
             </Typography>
             <FormControl style={{ width: "80%" }}>
               <Select
+                displayEmpty
                 id="isIBMNewHire"
                 value={info.isIBMNewHire}
                 style={{ width: "80%" }}
@@ -88,7 +108,7 @@ const Form = (props: any) => {
                 onChange={(e: any) => handleChange(e, "isIBMNewHire")}
                 //   inputProps={{ "aria-label": "Without label" }}
               >
-                <MenuItem disabled value="Y/N">
+                <MenuItem disabled value="">
                   None
                 </MenuItem>
                 <MenuItem value="Yes">Y</MenuItem>
@@ -139,19 +159,17 @@ const Form = (props: any) => {
             </FormControl>
           </Grid>
         </Grid>
-        {!isButtonHidden && (
-          <Box sx={{ mb: 2 }}>
-            <div>
-              <Button
-                variant="contained"
-                onClick={handleSubmit}
-                sx={{ mt: 1, mr: 1 }}
-              >
-                Continue
-              </Button>
-            </div>
-          </Box>
-        )}
+        <Box sx={{ mt: 2 }}>
+          <div>
+            <Button
+              variant="contained"
+              onClick={handleSubmit}
+              sx={{ mt: 1, mr: 1 }}
+            >
+              Continue
+            </Button>
+          </div>
+        </Box>
       </LocalizationProvider>
     </>
   );

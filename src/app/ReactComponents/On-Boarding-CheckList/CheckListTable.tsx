@@ -10,18 +10,22 @@ import {
   TextField,
   Input,
   Typography,
+  TablePagination,
 } from "@mui/material";
 import React, { Fragment, useEffect, useState } from "react";
-import { onBoardingChecklist } from "../../../json/response/onBoardingChecklist";
 
 const CheckListTable = (props: any) => {
   const infoDetails = props.infoData;
+  const onBoardingChecklist = props.onBoardingData.checkListDetails;
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [page, setPage] = React.useState(0);
   const tableHeader = [
     "On-Boarding Checklist",
     "Date Verified",
     "Yes/No or N/A",
     "Comments",
   ];
+
   if (infoDetails) {
     let today = new Date(infoDetails.onBoardingDate);
     let date =
@@ -31,13 +35,12 @@ const CheckListTable = (props: any) => {
       return (data.date = date);
     });
   }
-
   const [tableValues, setTableValues] = useState(onBoardingChecklist);
 
   const handleChange = (event: any, id: any, keyName: any) => {
     setTableValues((prevState: any) => {
       const newData = prevState.map((data: any) => {
-        if (data.id === id) {
+        if (data.checkListId === id) {
           if (keyName === "date") return { ...data, date: event.target.value };
           if (keyName === "comment")
             return { ...data, comment: event.target.value };
@@ -50,73 +53,116 @@ const CheckListTable = (props: any) => {
     });
   };
 
+  const handleChangePage = (event: any, newPage: any) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: any) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
   useEffect(() => {
-    props.onCheckListSubmit({ infoDetails, checkListDetails: tableValues });
+    props.onCheckListSubmit({ checkListDetails: tableValues });
   }, [tableValues]);
 
   return (
-    <Fragment>
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              {tableHeader &&
-                tableHeader.map((header) => {
-                  return (
-                    <TableCell key={header}>
-                      <Typography component="h3">
-                        <strong>{header}</strong>
-                      </Typography>
-                    </TableCell>
-                  );
-                })}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {tableValues &&
-              tableValues.map((tableValue: any) => {
-                return (
-                  <TableRow key={tableValue.id}>
-                    <TableCell>{tableValue.questions}</TableCell>
-                    <TableCell>
-                      <TextField
-                        variant="standard"
-                        value={tableValue.date}
-                        onChange={(e) => handleChange(e, tableValue.id, "date")}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Select
-                        displayEmpty
-                        value={tableValue.status}
-                        onChange={(e) =>
-                          handleChange(e, tableValue.id, "status")
-                        }
-                        inputProps={{ "aria-label": "Without label" }}
-                      >
-                        <MenuItem disabled value="">
-                          <em>None</em>
-                        </MenuItem>
-                        <MenuItem value="Yes">Yes</MenuItem>
-                        <MenuItem value="No">No</MenuItem>
-                        <MenuItem value="N/A">N/A</MenuItem>
-                      </Select>
-                    </TableCell>
-                    <TableCell>
-                      <Input
-                        value={tableValue.comment}
-                        onChange={(e) => {
-                          handleChange(e, tableValue.id, "comment");
-                        }}
-                      />
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Fragment>
+    onBoardingChecklist && (
+      <Fragment>
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow>
+                {tableHeader &&
+                  tableHeader.map((header) => {
+                    return (
+                      <TableCell key={header}>
+                        <Typography component="h3">
+                          <strong>{header}</strong>
+                        </Typography>
+                      </TableCell>
+                    );
+                  })}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {tableValues &&
+                tableValues
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((tableValue: any) => {
+                    return (
+                      <TableRow key={tableValue.checkListId}>
+                        <TableCell style={{ width: "40rem" }}>
+                          {tableValue.questions}
+                          {tableValue.link && (
+                            <div>
+                              <a
+                                href={tableValue.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                ({tableValue.linkName})
+                              </a>
+                            </div>
+                          )}
+                        </TableCell>
+                        <TableCell>
+                          <TextField
+                            variant="standard"
+                            value={tableValue.date}
+                            onChange={(e: any) =>
+                              handleChange(e, tableValue.checkListId, "date")
+                            }
+                          />
+                        </TableCell>
+                        <TableCell>
+                          <Select
+                            displayEmpty
+                            value={tableValue.status}
+                            onChange={(e) =>
+                              handleChange(e, tableValue.checkListId, "status")
+                            }
+                            inputProps={{ "aria-label": "Without label" }}
+                          >
+                            <MenuItem disabled value="">
+                              <em>None</em>
+                            </MenuItem>
+                            <MenuItem value="Yes">Yes</MenuItem>
+                            <MenuItem value="No">No</MenuItem>
+                            <MenuItem value="N/A">N/A</MenuItem>
+                          </Select>
+                        </TableCell>
+                        <TableCell>
+                          <Input
+                            value={tableValue.comment}
+                            onChange={(e) => {
+                              handleChange(
+                                e,
+                                tableValue.checkListId,
+                                "comment"
+                              );
+                            }}
+                          />
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={onBoardingChecklist.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          style={{ margin: 0, padding: 0 }}
+        />
+      </Fragment>
+    )
   );
 };
 

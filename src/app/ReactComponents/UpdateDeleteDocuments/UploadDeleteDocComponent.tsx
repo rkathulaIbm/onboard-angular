@@ -92,26 +92,24 @@ export default class UploadDeleteDocComponent extends React.Component<any, state
     override render() {
         return (
             <div className='mar-left-10'>
-                <h2>Upload Documents</h2>
+                <h2 className='mar-top-20'>Upload Documents</h2>
                 
-
                     <div className='file-upload-wrapper' data-text="Select your file!">
                         <label>Insert Files:
-                            <input type="file" multiple id="file" ref={this.fileUploaderRef} onChange={this.fileUpload} />
+                            <input type="file" id="file" ref={this.fileUploaderRef} onChange={this.fileUpload} />
                         </label>
                     </div>
-                    <h3>Documents:</h3>
                     <table>
-                        <tbody>
+                        <tbody>  
                             {
                                 this.state.files.map((file: any, i: any) =>
                                     <tr key={i}>
-                                        <td style={{ textAlign: "left" }}>{file.name} :</td>
+                                        <td className='upload-doc' style={{ textAlign: "left" }}>{file.name} :</td>
                                         <td>
-                                            <button onClick={() => this.callUploadAPI()}>Upload</button>
+                                            <button className='upload-btn' onClick={() => this.callUploadAPI()}>Upload</button>
                                         </td>
                                         <td>
-                                            <button onClick={() => this.Delete(file.name)}>Delete</button>
+                                            <button className='delete-btn' onClick={() => this.Delete(file.name)}>Delete</button>
                                         </td>
                                     </tr>
                                 )

@@ -12,23 +12,26 @@ import CheckListMainComponent from './CheckListMainComponent';
 
 @Component({
   selector: 'app-checkListAngularComponent',
-  template: '<div id="root"></div>',
+  template: '<div class="checklist" id="checkListId"></div>',
 })
-export class CheckListAngularComponent
-  implements OnChanges, AfterViewInit, OnDestroy
-{
+export class CheckListAngularComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+
+  ngOnInit(): void {
+    this.render();
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.render();
   }
   ngAfterViewInit(): void {
     this.render();
   }
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void { }
 
   private render() {
     ReactDOM.render(
       React.createElement(CheckListMainComponent),
-      document.getElementById('root')
+      document.getElementById('checkListId')
     );
   }
 }
