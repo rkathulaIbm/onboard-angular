@@ -31,6 +31,7 @@ const Form = (props: any) => {
   const [info, setInfo] = useState(data);
   const [error, setError] = useState("");
   const handleChange = (e: any, keyName: any) => {
+    setError("");
     if (keyName === "onBoardingDate")
       return setInfo({ ...info, onBoardingDate: e });
     else if (keyName === "employeeName")
@@ -61,7 +62,11 @@ const Form = (props: any) => {
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        {error && <Typography component="p">{error}</Typography>}
+        {error && (
+          <Typography component="p" color="red">
+            {error}
+          </Typography>
+        )}
         <Grid container spacing={2} alignItems="center" justifyContent="center">
           <Grid item xs={8} md={6} lg={3}>
             <Typography id="employeeName" variant="h3" style={{ margin: 0 }}>
