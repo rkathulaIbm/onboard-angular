@@ -23,7 +23,7 @@ const ExcelDownloadReactComponent: React.FunctionComponent<
     // });
     setIExcelData(props.inputExcelData);
     console.log("excel data ", props.inputExcelData);
-    if (props.inputExcelData.checkListDetails) {
+    if (props.inputExcelData?.checkListDetails) {
       let checkListExceldata = props.inputExcelData.checkListDetails.map(
         (data: any) => {
           let updatedData = {
