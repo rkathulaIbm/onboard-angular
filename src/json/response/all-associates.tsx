@@ -5,7 +5,7 @@ export const allAssociates: any = [
           "emailIBM": "rajesh.kathulapalli@ibm.com",
           "location": "Pune",
           "role": "Engineer",
-          "itExpDate": "7/01/2014",
+          "itExpDate": "2020-10-25T04:34:21Z",
           "primaryContact": "9860834145",
           "projectId": "234456",
           "engagementName": "yuty",
@@ -47,7 +47,7 @@ export const allAssociates: any = [
         "emailIBM":"aritra@ibm.com",
         "location":"Kolkata",
         "role":"Engineer",
-        "itExpDate":"05/05/2015",
+        "itExpDate":"2020-04-23T20:21:55Z",
         "engagementName":"Engineer",
         "emailClient":"ayu@pru.com",
         "xid":"123487"
@@ -59,7 +59,7 @@ export const allAssociates: any = [
         "emailIBM":"keshav@ibm.com",
         "location":"Pune",
         "role":"Engineer",
-        "itExpDate":"7/01/2014",
+        "itExpDate":"2020-05-01T16:16:38Z",
         "engagementName":"Engineer",
         "emailClient":"kesh@pru.com",
         "xid":"341234"
@@ -71,7 +71,7 @@ export const allAssociates: any = [
         "emailIBM":"Waseem@ibm.com",
         "location":"Mumbai",
         "role":"Team lead",
-        "itExpDate":"02/01/2015",
+        "itExpDate":"2020-11-24T22:10:03Z",
         "engagementName":"Engineer",
         "emailClient":"kesh@pru.com",
         "xid":"341234"
@@ -83,7 +83,7 @@ export const allAssociates: any = [
         "emailIBM":"priya@ibm.com",
         "location":"Kolkata",
         "role":"Engineer",
-        "itExpDate":"05/05/2018",
+        "itExpDate":"2020-08-10T13:52:03Z",
         "engagementName":"Engineer",
         "emailClient":"kesh@pru.com",
         "xid":"341234"
@@ -95,7 +95,7 @@ export const allAssociates: any = [
         "emailIBM":"vijay@ibm.com",
         "location":"Hyderabad",
         "role":"Engineer",
-        "itExpDate":"7/01/2014",
+        "itExpDate":"2020-10-18T18:49:19Z",
         "engagementName":"Engineer",
         "emailClient":"kesh@pru.com",
         "xid":"341234"
@@ -107,7 +107,7 @@ export const allAssociates: any = [
         "emailIBM":"nivedita@ibm.com",
         "location":"Banglore",
         "role":"Engineer",
-        "itExpDate":"7/06/2014",
+        "itExpDate":"2020-11-30T00:51:26Z",
         "engagementName":"Engineer",
         "emailClient":"kesh@pru.com",
         "xid":"341234"
