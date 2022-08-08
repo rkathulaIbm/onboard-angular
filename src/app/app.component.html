@@ -3,7 +3,7 @@
     >Onboarding Application</span
   >
   <span class="example-spacer"></span>
-  <button
+  <!-- <button
     *ngIf="!jwtToken"
     mat-raised-button
     color="success"
@@ -11,7 +11,7 @@
     (click)="doLogin()"
   >
     Login
-  </button>
+  </button> -->
   <button
     *ngIf="jwtToken"
     mat-raised-button
@@ -59,11 +59,16 @@
   >
     Upload Documents
   </button>
-  <button mat-raised-button color="success" routerLink="/comment">
+  <!-- <button
+    style="margin-left: 10px"
+    mat-raised-button
+    color="success"
+    routerLink="/comment"
+  >
     Comments
-  </button>
+  </button> -->
   <button
-    style="margin-right: 10px"
+    style="margin-left: 10px"
     mat-raised-button
     color="success"
     routerLink="/home/associate/training"
