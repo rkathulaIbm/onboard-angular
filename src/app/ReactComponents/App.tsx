@@ -58,7 +58,7 @@ const App = () => {
         emailIBM: data.emailIBM,
         location: data.location,
         role: data.role,
-        itExpDate: data.itExpDate
+        itExpDate: new Date(data.itExpDate)
       };
     });
     console.log("Formatted Data",formattedData)
@@ -112,8 +112,8 @@ const App = () => {
       field: "itExpDate",
       headerName: "IT Exp Date",
       cellStyle: {textAlign: 'center'},
-      minWidth: 100,
-      maxWidth: 150,
+      minWidth: 250,
+      maxWidth: 300,
       filter: "agDateColumnFilter",
       filterParams: {
         defaultOption: "inRange",
