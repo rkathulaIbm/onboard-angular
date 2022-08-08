@@ -12,7 +12,7 @@ import { OnboardDialogComponent } from '../onboard-dialog/onboard-dialog.compone
 import { ApiService } from '../services/api.service';
 import { ExcelService } from '../services/excel.service';
 import { allAssociates } from "../../json/response/all-associates";  
-
+import DTPicker from 'src/app/ReactComponents/DTPicker';
 @Component({
   selector: 'app-all-associates',
   templateUrl: './all-associates.component.html',
@@ -87,6 +87,7 @@ export class AllAssociatesComponent implements OnInit, AfterViewInit {
     });
   }
 
+  
   
   downloadAllAssociatesDetails(){
     // let url="http://localhost:9191/pru-associate/export-excel/"
