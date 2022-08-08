@@ -12,8 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 //import DataTable from 'react-data-table-component';
 import { any } from "prop-types";
+import { allAssociates } from "../../json/response/all-associates"; 
+import { useState } from "react";
 import { GridApi, GridReadyEvent } from "ag-grid-community";
-import { NonNullableFormBuilder } from "@angular/forms";
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
   const [gridApi, setGridApi] = React.useState<any | []>([]);
   //const [gridApi, setFilterModel] = React.useState<any | []>([]);
   
+  const [tableValues] = useState(allAssociates);
   const [dataSet] = React.useState([
     { id: 1, eventTimestamp: '2020-10-25T04:34:21Z' },
     { id: 2, eventTimestamp: '2020-04-23T20:21:55Z' },
@@ -49,14 +51,18 @@ const App = () => {
 
   React.useEffect(() => {
       
-    const formattedDates= dataSet.map((data:any) =>{
+    const formattedData= tableValues.map((data:any) =>{
       return {
-        id: data.id,
-        eventTimestamp: new Date(data.eventTimestamp)
+        associateName: data.associateName,
+        ibmId: data.ibmId,
+        emailIBM: data.emailIBM,
+        location: data.location,
+        role: data.role,
+        itExpDate: data.itExpDate
       };
     });
-    console.log("Formatted Dates",formattedDates)
-    setRowData(formattedDates);
+    console.log("Formatted Data",formattedData)
+    setRowData(formattedData);
 
   }, []);
   
@@ -68,16 +74,46 @@ const App = () => {
   };
   const cols = [
     {
-      field: "id",
-      headerName: "ID",
+      field: "associateName",
+      headerName: "Associate Name",
+      cellStyle: {textAlign: 'center'},
       minWidth: 100,
       maxWidth: 150
     },
     {
-      field: "eventTimestamp",
-      headerName: "Event Timestamp",
-      minWidth: 225,
-      maxWidth: 300,
+      field: "ibmId",
+      headerName: "IBM  Id",
+      cellStyle: {textAlign: 'center'},
+      minWidth: 100,
+      maxWidth: 150
+    },
+    {
+      field: "emailIBM",
+      headerName: "Email IBM",
+      cellStyle: {textAlign: 'center'},
+      minWidth: 100,
+      maxWidth: 150
+    },
+    {
+      field: "location",
+      headerName: "Location",
+      cellStyle: {textAlign: 'center'},
+      minWidth: 100,
+      maxWidth: 150
+    },
+    {
+      field: "role",
+      headerName: "Role",
+      cellStyle: {textAlign: 'center'},
+      minWidth: 100,
+      maxWidth: 150
+    },
+    {
+      field: "itExpDate",
+      headerName: "IT Exp Date",
+      cellStyle: {textAlign: 'center'},
+      minWidth: 100,
+      maxWidth: 150,
       filter: "agDateColumnFilter",
       filterParams: {
         defaultOption: "inRange",
@@ -142,6 +178,7 @@ const handleGridReady = (event: GridReadyEvent) => {
           defaultColDef={{
             flex: 1,
             minWidth: 100,
+            cellStyle: {textAlign: 'center'},
             resizable: true,
             sortable: true,
             filter: true,
