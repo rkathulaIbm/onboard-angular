@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import React, { Fragment } from 'react';
 
-const tableHeader = ["Recording", "Link", "Remarks"];
+const tableHeader = ["Recording Description", "Recording Link"];
 const RecordingList = (props: { recordings: any[]; editRecording: any; deleteRecording: (arg0: any) => void; }) => (
 
     <TableContainer style={{ margin: "0px" }}>
@@ -35,9 +35,8 @@ const RecordingList = (props: { recordings: any[]; editRecording: any; deleteRec
                 {props.recordings.length > 0 ? (
                     props.recordings.map(item => (
                         <TableRow key={item.recordingId}>
-                            <TableCell>{item.recordingName}</TableCell>
-                            <TableCell><a target="_blank" href={item.link}>{item.link} </a></TableCell>
-                            <TableCell>{item.remarks}</TableCell>
+                            <TableCell>{item.recordingDescription}</TableCell>
+                            <TableCell><a target="_blank" href={item.link}>{item.link}</a><br/>Password : {item.password}</TableCell>
                             <TableCell>
                                 <Button type='submit'
                                     onClick={() => props.editRecording(item)}

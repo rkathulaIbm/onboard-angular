@@ -6,7 +6,7 @@ import EditRecording from './EditRecording';
 
 const RecordingMainComponent = () => {
 
-    const initialFormState = { recordingId: '', recordingName: '', link: '', remarks: '' }
+    const initialFormState = { recordingId: '', recordingDescription: '', link: '', password: '' }
     const [recordings, setRecordings] = useState(recordingData)
     const [editing, setEditing] = useState(false);
     const [currentRecording, setCurrentRecording] = useState(initialFormState)
@@ -24,9 +24,9 @@ const RecordingMainComponent = () => {
         setEditing(true)
         setCurrentRecording({
             recordingId: recording.recordingId,
-            recordingName: recording.recordingName,
+            recordingDescription: recording.recordingDescription,
             link: recording.link,
-            remarks: recording.remarks
+            password: recording.password
         })
     }
     //  update recording
@@ -53,7 +53,7 @@ const RecordingMainComponent = () => {
                     </div>
                 ) : (
                     <div>
-                        <h2 style={{textAlign:"center"}}>Add Recording</h2>
+                        <h2 style={{textAlign:"center"}}>Recording</h2>
                         <div>
                             <AddRecording addRecording={addRecording} />
                         </div>

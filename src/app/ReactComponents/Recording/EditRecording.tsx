@@ -28,7 +28,7 @@ const EditRecording = (props: any) => {
   return (
     <form onSubmit={event => {
       event.preventDefault()
-      if (!recording.recordingName || !recording.link || !recording.remarks) return
+      if (!recording.recordingDescription || !recording.link || !recording.password) return
 
       props.updateRecording(recording.recordingId, recording)
     }}>
@@ -37,10 +37,10 @@ const EditRecording = (props: any) => {
         <Grid item xs={8} md={6} lg={3}>
           <TextField
             variant="outlined"
-            id="recordingName"
-            name="recordingName"
-            value={recording.recordingName}
-            placeholder="Enter Recording Name"
+            id="recordingDescription"
+            name="recordingDescription"
+            value={recording.recordingDescription}
+            placeholder="Enter Description"
             style={{ width: "80%" }}
             size="small"
             onChange={handleInputChange}
@@ -63,10 +63,10 @@ const EditRecording = (props: any) => {
 
           <TextField
             variant="outlined"
-            id="remarks"
-            name="remarks"
-            value={recording.remarks}
-            placeholder="Enter remarks (if any)"
+            id="password"
+            name="password"
+            value={recording.password}
+            placeholder="Enter Link Password"
             style={{ width: "80%" }}
             size="small"
             onChange={handleInputChange}

@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 
 const AddRecording = (props: any) => {
-  const initialFormState = { recordingId: '', recordingName: '', link: '', remarks: '' }
+  const initialFormState = { recordingId: '', recordingDescription: '', link: '', password: '' }
   const [recording, setRecording] = useState(initialFormState)
 
   const handleInputChange = (event: any) => {
@@ -18,7 +18,7 @@ const AddRecording = (props: any) => {
   return (
     <form onSubmit={event => {
       event.preventDefault()
-      if (!recording.recordingName || !recording.link || !recording.remarks) return
+      if (!recording.recordingDescription || !recording.link || !recording.password) return
       props.addRecording(recording)
       setRecording(initialFormState)
     }}>
@@ -26,10 +26,10 @@ const AddRecording = (props: any) => {
         <Grid item xs={8} md={6} lg={3}>
           <TextField
             variant="outlined"
-            id="recordingName"
-            name="recordingName"
-            value={recording.recordingName}
-            placeholder="Enter Recording Name"
+            id="recordingDescription"
+            name="recordingDescription"
+            value={recording.recordingDescription}
+            placeholder="Enter Description"
             style={{ width: "80%" }}
             size="small"
             onChange={handleInputChange}
@@ -52,10 +52,10 @@ const AddRecording = (props: any) => {
 
           <TextField
             variant="outlined"
-            id="remarks"
-            name="remarks"
-            value={recording.remarks}
-            placeholder="Enter remarks (if any)"
+            id="password"
+            name="password"
+            value={recording.password}
+            placeholder="Enter Link Password"
             style={{ width: "80%" }}
             size="small"
             onChange={handleInputChange}
@@ -67,7 +67,7 @@ const AddRecording = (props: any) => {
             color="success"
             sx={{ mt: 2, mr: 2 }}
           >
-            Add Recording
+            Submit
           </Button>
         
       </Grid>
